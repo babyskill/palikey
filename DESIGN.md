@@ -200,16 +200,19 @@ release signing stay on MacBook / Mac mini when the time comes.
 
 ## 9. Decisions for Kien
 
+DECIDED 2026-11-17 11:25 (Kien, via options): (1) clean-room MIT — confirmed;
+(3) PaliTelex suffix `x` — confirmed; (2) product name — decide later.
+
 1. **License/approach:** clean-room MIT (recommended, §2) vs fork vnkey under
-   GPL-3.0. Default if unanswered: clean-room MIT.
+   GPL-3.0. → DECIDED: clean-room MIT.
 2. **Product name:** codename `palikey` for the repo. Store-facing name cannot
    be "Pali Key" (taken on iOS). Candidates: `PaliType`, `SuttaKey`,
-   `PāḷiBoard`. Default if unanswered: keep codename, decide name at Phase 1.
+   `PāḷiBoard`. → DEFERRED by Kien: keep codename, decide name at Phase 1.
 3. **PaliTelex suffix:** `x` (`tx`→ṭ) vs `r` (`tr`→ṭ) vs dot-suffix (`t.`→ṭ,
-   closest to Velthuis reversed). Default if unanswered: `x` in Phase 0 data
-   table — changeable as data later.
+   closest to Velthuis reversed). → DECIDED: `x`.
 4. **GitHub home:** new public repo `babyskill/palikey` (like PaliDict's public
    MIT repo). Default if unanswered: local repo on iMac only, push later.
+   (Still open; default applies.)
 
 ## 10. Non-goals
 
