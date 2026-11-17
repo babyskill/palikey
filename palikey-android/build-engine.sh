@@ -125,6 +125,7 @@ for entry in "${TARGETS[@]}"; do
         -I"${ENGINE_DIR}/include" \
         "${CPP_DIR}/native-lib.cpp" \
         "${STATIC_LIB}" \
+        -static-libstdc++ \
         -llog \
         -o "${ABI_DEST}/libpalikey_jni.so"
 
