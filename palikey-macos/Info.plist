@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>PaliKey</string>
+	<key>CFBundleExecutable</key>
+	<string>PaliKey</string>
+	<key>CFBundleIconFile</key>
+	<string>PaliKey</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.giacngo.inputmethod.PaliKey</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>PaliKey</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>ComponentInputModeDict</key>
+	<dict>
+		<key>tsInputModeListKey</key>
+		<dict>
+			<key>org.giacngo.inputmethod.PaliKey</key>
+			<dict>
+				<key>tsInputModeIsVisibleKey</key>
+				<true/>
+				<key>tsInputModeKeyAgreementReplacementKey</key>
+				<string>org.giacngo.inputmethod.PaliKey</string>
+				<key>tsInputModeMenuIconFileKey</key>
+				<string>PaliKey.tiff</string>
+				<key>tsInputModePaletteIconFileKey</key>
+				<string>PaliKey.tiff</string>
+				<key>tsInputModePrimaryInScriptKey</key>
+				<true/>
+				<key>tsInputModeScriptKey</key>
+				<string>smRoman</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>InputMethodConnectionName</key>
+	<string>PaliKey_1_Connection</string>
+	<key>InputMethodServerControllerClass</key>
+	<string>PaliKeyInputController</string>
+	<key>InputMethodServerDelegateClass</key>
+	<string>AppDelegate</string>
+	<key>LSBackgroundOnly</key>
+	<true/>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>tsInputMethodCharacterRepertoireKey</key>
+	<string>Latn</string>
+	<key>tsInputMethodIconPath</key>
+	<string>PaliKey.tiff</string>
+</dict>
+</plist>

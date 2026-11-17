@@ -2,6 +2,10 @@
 target/
 Cargo.lock
 
+# macOS build artifacts
+palikey-macos/build/
+build/
+
 # Operating system files
 .DS_Store
 Thumbs.db
