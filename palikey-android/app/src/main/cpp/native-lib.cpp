@@ -19,17 +19,8 @@
 extern "C" {
 
 /* ========================================================================= */
-/* Companion / Static Methods                                                */
+/* Static Version Method                                                     */
 /* ========================================================================= */
-
-JNIEXPORT jstring JNICALL
-Java_org_giacngo_palikey_NativeEngine_00024Companion_nativeVersion(
-    JNIEnv *env,
-    jobject /* this */
-) {
-    const char *ver = palikey_version();
-    return env->NewStringUTF(ver ? ver : "0.1.0");
-}
 
 JNIEXPORT jstring JNICALL
 Java_org_giacngo_palikey_NativeEngine_nativeVersion(
@@ -170,6 +161,11 @@ Java_org_giacngo_palikey_NativeEngine_nativeReset(
 
 static const JNINativeMethod gNativeEngineMethods[] = {
     {
+        (char *)"nativeVersion",
+        (char *)"()Ljava/lang/String;",
+        (void *)Java_org_giacngo_palikey_NativeEngine_nativeVersion
+    },
+    {
         (char *)"nativeCreate",
         (char *)"(IIZ)J",
         (void *)Java_org_giacngo_palikey_NativeEngine_nativeCreate
@@ -196,14 +192,6 @@ static const JNINativeMethod gNativeEngineMethods[] = {
     }
 };
 
-static const JNINativeMethod gNativeEngineCompanionMethods[] = {
-    {
-        (char *)"nativeVersion",
-        (char *)"()Ljava/lang/String;",
-        (void *)Java_org_giacngo_palikey_NativeEngine_00024Companion_nativeVersion
-    }
-};
-
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void * /* reserved */) {
     JNIEnv *env = nullptr;
     if (vm->GetEnv(reinterpret_cast<void **>(&env), JNI_VERSION_1_6) != JNI_OK) {
@@ -212,24 +200,23 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void * /* reserved */) {
     }
 
     jclass engineClass = env->FindClass("org/giacngo/palikey/NativeEngine");
-    if (engineClass) {
-        env->RegisterNatives(
+    if (!engineClass) {
+        LOGE("JNI_OnLoad: FindClass org/giacngo/palikey/NativeEngine failed");
+        env->ExceptionClear();
+        return JNI_ERR;
+    }
+
+    if (env->RegisterNatives(
             engineClass,
             gNativeEngineMethods,
             sizeof(gNativeEngineMethods) / sizeof(gNativeEngineMethods[0])
-        );
+        ) != JNI_OK) {
+        LOGE("JNI_OnLoad: RegisterNatives for NativeEngine failed");
+        env->ExceptionClear();
         env->DeleteLocalRef(engineClass);
+        return JNI_ERR;
     }
-
-    jclass companionClass = env->FindClass("org/giacngo/palikey/NativeEngine$Companion");
-    if (companionClass) {
-        env->RegisterNatives(
-            companionClass,
-            gNativeEngineCompanionMethods,
-            sizeof(gNativeEngineCompanionMethods) / sizeof(gNativeEngineCompanionMethods[0])
-        );
-        env->DeleteLocalRef(companionClass);
-    }
+    env->DeleteLocalRef(engineClass);
 
     LOGI("JNI_OnLoad successfully registered native methods");
     return JNI_VERSION_1_6;
