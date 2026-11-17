@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PaliKey</string>
+    <string name="ime_name">PaliKey Keyboard</string>
+    <string name="subtype_palikey">Pāḷi (Transliteration)</string>
+    <string name="settings_name">PaliKey Settings</string>
+</resources>

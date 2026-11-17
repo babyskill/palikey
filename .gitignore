@@ -6,6 +6,15 @@ Cargo.lock
 palikey-macos/build/
 build/
 
+# Android build artifacts
+palikey-android/.gradle/
+palikey-android/.kotlin/
+palikey-android/build/
+palikey-android/app/build/
+palikey-android/local.properties
+.cxx/
+*.apk
+
 # Operating system files
 .DS_Store
 Thumbs.db
