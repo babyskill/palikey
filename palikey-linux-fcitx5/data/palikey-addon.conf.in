@@ -1,0 +1,10 @@
+[Addon]
+Name=PaliKey
+Comment=Pāḷi Input Method Engine
+Category=InputMethod
+Version=@PROJECT_VERSION@
+Type=SharedLibrary
+OnDemand=True
+Configurable=True
+Library=palikey
+Dependencies=

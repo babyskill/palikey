@@ -1,0 +1,24 @@
+<component>
+    <name>org.freedesktop.IBus.PaliKey</name>
+    <description>PaliKey Pāḷi Input Method</description>
+    <exec>@CMAKE_INSTALL_FULL_LIBEXECDIR@/ibus-engine-palikey --ibus</exec>
+    <version>@PROJECT_VERSION@</version>
+    <author>Giac Ngo &lt;info@giacngo.org&gt;</author>
+    <license>MIT</license>
+    <homepage>https://giacngo.org/tools</homepage>
+    <textdomain>ibus-palikey</textdomain>
+    <engines>
+        <engine>
+            <name>palikey</name>
+            <longname>PaliKey (Pāḷi)</longname>
+            <description>Pāḷi input method engine (Velthuis, PaliTelex, SIL)</description>
+            <language>pi</language>
+            <license>MIT</license>
+            <author>Giac Ngo &lt;info@giacngo.org&gt;</author>
+            <icon>@CMAKE_INSTALL_FULL_DATADIR@/icons/hicolor/scalable/apps/palikey.svg</icon>
+            <layout>us</layout>
+            <layout_variant></layout_variant>
+            <rank>99</rank>
+        </engine>
+    </engines>
+</component>

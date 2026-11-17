@@ -1,0 +1,6 @@
+[InputMethod]
+Name=PaliKey
+Icon=org.giacngo.palikey
+LangCode=pi
+Addon=palikey
+Configurable=True
