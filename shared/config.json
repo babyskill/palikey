@@ -1,0 +1,13 @@
+{
+  "$schema": "./config.schema.json",
+  "version": "0.1.0",
+  "scheme": "velthuis",
+  "niggahita": "dot_below",
+  "extended_set": false,
+  "escape": {
+    "enabled": true,
+    "escape_char": "\\",
+    "undo_by_backspace": true,
+    "repeat_key_escapes": true
+  }
+}

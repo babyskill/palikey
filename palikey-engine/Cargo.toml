@@ -1,0 +1,16 @@
+[package]
+name = "palikey-engine"
+version = "0.1.0"
+edition = "2021"
+authors = ["PaliKey Contributors"]
+license = "MIT"
+description = "Clean-room cross-platform Pāḷi input method engine"
+readme = "README.md"
+
+[lib]
+name = "palikey_engine"
+crate-type = ["lib", "staticlib", "cdylib"]
+
+[dependencies]
+
+[dev-dependencies]

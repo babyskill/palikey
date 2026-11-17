@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PaliKeyConfig",
+  "description": "Configuration schema for the PaliKey cross-platform Pāḷi input method engine",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the configuration format"
+    },
+    "scheme": {
+      "type": "string",
+      "enum": ["velthuis", "palitelex", "sil"],
+      "default": "velthuis",
+      "description": "Active input transliteration scheme"
+    },
+    "niggahita": {
+      "type": "string",
+      "enum": ["dot_below", "dot_above"],
+      "default": "dot_below",
+      "description": "Niggahīta variant: dot_below (ṃ U+1E43, PTS/SuttaCentral standard) or dot_above (ṁ U+1E41, VRI tradition)"
+    },
+    "extended_set": {
+      "type": "boolean",
+      "default": false,
+      "description": "Enable extended Sanskrit/IAST characters (ṛ ṝ ḹ ḥ ś ṣ ē ō)"
+    },
+    "escape": {
+      "type": "object",
+      "description": "Escape and undo behavior settings",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable escape mechanisms for typing literal non-Pāḷi words"
+        },
+        "escape_char": {
+          "type": "string",
+          "maxLength": 1,
+          "default": "\\",
+          "description": "Single character prefix that bypasses sequence composition"
+        },
+        "undo_by_backspace": {
+          "type": "boolean",
+          "default": true,
+          "description": "Backspace immediately after composed character restores raw sequence"
+        },
+        "repeat_key_escapes": {
+          "type": "boolean",
+          "default": true,
+          "description": "Typing trigger key again immediately restores raw sequence plus trigger key"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "scheme",
+    "niggahita",
+    "extended_set"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "palikey-engine",
+]
+resolver = "2"

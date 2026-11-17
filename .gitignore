@@ -1,0 +1,13 @@
+# Rust build artifacts
+target/
+Cargo.lock
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# .agy directory convention: ignore local caches, keep briefs, launch scripts and done reports
+.agy/*
+!.agy/briefs/
+!.agy/done/
+!.agy/launch_phase0.sh
