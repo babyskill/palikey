@@ -100,11 +100,13 @@ class KeyboardView(
 
     private fun buildAlphaLayout() {
         val mode = preferences.keyboardMode
+        val isVietnamese = preferences.schemeId == NativeEngine.SCHEME_VIETNAMESE_TELEX
 
         // 1. Pāḷi Row
         // Visible when mode is PALI_ROW or when user explicitly toggled it in TRANSDUCER mode
-        val showPaliRow = (mode == KeyboardMode.PALI_ROW) ||
-                (mode == KeyboardMode.TRANSDUCER && isPaliRowExplicitlyVisible)
+        // In Vietnamese mode, there is NO Pāḷi top row (§Part B)
+        val showPaliRow = !isVietnamese && ((mode == KeyboardMode.PALI_ROW) ||
+                (mode == KeyboardMode.TRANSDUCER && isPaliRowExplicitlyVisible))
 
         if (showPaliRow) {
             addView(createPaliRow())
@@ -246,14 +248,16 @@ class KeyboardView(
 
         // Mode cycling key: Transducer → Pāḷi Row → Off
         val mode = preferences.keyboardMode
-        val modeLabel = when (mode) {
-            KeyboardMode.TRANSDUCER -> "⚡ ${preferences.schemeName}"
-            KeyboardMode.PALI_ROW -> "🔤 Pāḷi Row"
-            KeyboardMode.OFF -> "⌨️ Off"
+        val isVietnamese = preferences.schemeId == NativeEngine.SCHEME_VIETNAMESE_TELEX
+        val modeLabel = when {
+            mode == KeyboardMode.OFF -> "⌨️ Off"
+            isVietnamese -> "Tiếng Việt"
+            mode == KeyboardMode.PALI_ROW -> "🔤 Pāḷi Row"
+            else -> "⚡ ${preferences.schemeName}"
         }
         val modeKey = createSpecialKey(modeLabel, weight = 1.7f) {
             val nextMode = when (mode) {
-                KeyboardMode.TRANSDUCER -> KeyboardMode.PALI_ROW
+                KeyboardMode.TRANSDUCER -> if (isVietnamese) KeyboardMode.OFF else KeyboardMode.PALI_ROW
                 KeyboardMode.PALI_ROW -> KeyboardMode.OFF
                 KeyboardMode.OFF -> KeyboardMode.TRANSDUCER
             }
@@ -279,7 +283,7 @@ class KeyboardView(
         row.addView(spaceKey)
 
         // Pāḷi Row quick toggle or dot
-        if (mode == KeyboardMode.TRANSDUCER) {
+        if (mode == KeyboardMode.TRANSDUCER && !isVietnamese) {
             val toggleLabel = if (isPaliRowExplicitlyVisible) "▲ Pāḷi" else "▼ Pāḷi"
             val paliToggleKey = createSpecialKey(toggleLabel, weight = 1.2f) {
                 isPaliRowExplicitlyVisible = !isPaliRowExplicitlyVisible

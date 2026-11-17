@@ -203,6 +203,11 @@ release signing stay on MacBook / Mac mini when the time comes.
 DECIDED 2026-11-17 11:25 (Kien, via options): (1) clean-room MIT — confirmed;
 (3) PaliTelex suffix `x` — confirmed; (2) product name — decide later.
 
+DECIDED 2026-11-17 (Owner, Phase 5): Vietnamese Telex added as scheme 4
+(engine id 3), clean-room from orthography spec, Android-first. Enables
+bilingual Vietnamese and Pāḷi input in a single keyboard without third-party
+IME dependencies.
+
 1. **License/approach:** clean-room MIT (recommended, §2) vs fork vnkey under
    GPL-3.0. → DECIDED: clean-room MIT.
 2. **Product name:** codename `palikey` for the repo. Store-facing name cannot

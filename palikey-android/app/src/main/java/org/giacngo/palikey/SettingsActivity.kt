@@ -116,7 +116,8 @@ class SettingsActivity : Activity() {
         val schemes = listOf(
             Triple(NativeEngine.SCHEME_VELTHUIS, "Velthuis (Academic Standard)", "aa→ā, .t→ṭ, \"n→ṅ, ~n→ñ, .m→ṃ"),
             Triple(NativeEngine.SCHEME_PALI_TELEX, "PaliTelex (Vietnamese-friendly)", "aa→ā, tx→ṭ, ngw→ṅ, nw/ny→ñ, mx→ṃ"),
-            Triple(NativeEngine.SCHEME_SIL, "SIL / Keyman Compatible", "-a→ā, .t→ṭ, >n→ṅ, ~n→ñ, .m→ṃ")
+            Triple(NativeEngine.SCHEME_SIL, "SIL / Keyman Compatible", "-a→ā, .t→ṭ, >n→ṅ, ~n→ñ, .m→ṃ"),
+            Triple(NativeEngine.SCHEME_VIETNAMESE_TELEX, "Vietnamese (Telex)", "aa→â, aw→ă, dd→đ, s/f/r/x/j = sắc/huyền/hỏi/ngã/nặng")
         )
 
         val currentScheme = preferences.schemeId

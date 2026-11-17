@@ -7,6 +7,7 @@
 
 use crate::chars::*;
 use crate::schemes::*;
+use crate::vi_telex::VietnameseTelexComposer;
 
 /// The result returned by the engine after processing an input action.
 ///
@@ -121,6 +122,8 @@ pub struct Engine {
     last_composition: Option<CompositionRecord>,
     /// Whether the next character is escaped by the escape prefix.
     escape_active: bool,
+    /// Dedicated Vietnamese Telex composer for SchemeId::VietnameseTelex.
+    vi_composer: VietnameseTelexComposer,
 }
 
 impl Default for Engine {
@@ -137,6 +140,7 @@ impl Engine {
             buffer: String::with_capacity(64),
             last_composition: None,
             escape_active: false,
+            vi_composer: VietnameseTelexComposer::new(),
         }
     }
 
@@ -161,6 +165,7 @@ impl Engine {
     /// Changes the active scheme.
     pub fn set_scheme(&mut self, scheme: SchemeId) {
         self.config.scheme = scheme;
+        self.reset();
     }
 
     /// Changes the niggahīta variant.
@@ -175,11 +180,23 @@ impl Engine {
 
     /// Returns the contents of the current word buffer.
     pub fn buffer(&self) -> &str {
-        &self.buffer
+        if self.config.scheme == SchemeId::VietnameseTelex {
+            self.vi_composer.buffer()
+        } else {
+            &self.buffer
+        }
     }
 
     /// Main entry point: process a KeyAction through the state machine.
     pub fn process(&mut self, action: KeyAction) -> ProcessResult {
+        if self.config.scheme == SchemeId::VietnameseTelex {
+            return match action {
+                KeyAction::Char(c) => self.vi_composer.process_char(c),
+                KeyAction::Backspace => self.vi_composer.process_backspace(),
+                KeyAction::Reset => self.vi_composer.reset(),
+            };
+        }
+
         match action {
             KeyAction::Char(c) => self.process_char(c),
             KeyAction::Backspace => self.process_backspace(),
@@ -345,6 +362,7 @@ impl Engine {
         self.buffer.clear();
         self.last_composition = None;
         self.escape_active = false;
+        self.vi_composer.reset();
         ProcessResult::empty()
     }
 

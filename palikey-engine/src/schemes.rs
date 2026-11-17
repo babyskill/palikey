@@ -17,15 +17,18 @@ pub enum SchemeId {
     PaliTelex = 1,
     /// SIL / Keyman scheme (giacngo.org guide: -a->ā, .t->ṭ, >n->ṅ, ~n->ñ, .m->ṃ)
     Sil = 2,
+    /// Vietnamese Telex scheme (clean-room Phase 5)
+    VietnameseTelex = 3,
 }
 
 impl SchemeId {
-    /// Returns the scheme identifier from an integer code (0=Velthuis, 1=PaliTelex, 2=Sil).
+    /// Returns the scheme identifier from an integer code (0=Velthuis, 1=PaliTelex, 2=Sil, 3=VietnameseTelex).
     pub const fn from_u32(val: u32) -> Option<Self> {
         match val {
             0 => Some(Self::Velthuis),
             1 => Some(Self::PaliTelex),
             2 => Some(Self::Sil),
+            3 => Some(Self::VietnameseTelex),
             _ => None,
         }
     }
@@ -36,6 +39,7 @@ impl SchemeId {
             Self::Velthuis => "velthuis",
             Self::PaliTelex => "palitelex",
             Self::Sil => "sil",
+            Self::VietnameseTelex => "vietelex",
         }
     }
 }
@@ -309,6 +313,22 @@ pub static SCHEME_SIL: SchemeDefinition = SchemeDefinition {
 };
 
 // =============================================================================
+// Scheme 4: Vietnamese Telex (Phase 5)
+// =============================================================================
+
+static VIET_TELEX_MAPPINGS: &[MappingRule] = &[
+    MappingRule { sequence: "aa", target: TargetChar::Fixed('â'), is_extended: false },
+];
+
+pub static SCHEME_VIET_TELEX: SchemeDefinition = SchemeDefinition {
+    id: SchemeId::VietnameseTelex,
+    name: "vietelex",
+    display_name: "Vietnamese (Telex)",
+    description: "Standard Vietnamese Telex input method (clean-room composer)",
+    mappings: VIET_TELEX_MAPPINGS,
+};
+
+// =============================================================================
 // Scheme Registry & Accessors
 // =============================================================================
 
@@ -318,6 +338,7 @@ pub fn get_scheme(id: SchemeId) -> &'static SchemeDefinition {
         SchemeId::Velthuis => &SCHEME_VELTHUIS,
         SchemeId::PaliTelex => &SCHEME_PALI_TELEX,
         SchemeId::Sil => &SCHEME_SIL,
+        SchemeId::VietnameseTelex => &SCHEME_VIET_TELEX,
     }
 }
 
@@ -327,11 +348,12 @@ pub fn find_scheme_by_name(name: &str) -> Option<&'static SchemeDefinition> {
         "velthuis" => Some(&SCHEME_VELTHUIS),
         "palitelex" | "telex" => Some(&SCHEME_PALI_TELEX),
         "sil" | "keyman" => Some(&SCHEME_SIL),
+        "vietelex" | "vietnamese" | "viet_telex" => Some(&SCHEME_VIET_TELEX),
         _ => None,
     }
 }
 
-static ALL_SCHEMES: [SchemeDefinition; 3] = [SCHEME_VELTHUIS, SCHEME_PALI_TELEX, SCHEME_SIL];
+static ALL_SCHEMES: [SchemeDefinition; 4] = [SCHEME_VELTHUIS, SCHEME_PALI_TELEX, SCHEME_SIL, SCHEME_VIET_TELEX];
 
 /// Returns a slice of all available schemes in the engine.
 pub fn all_schemes() -> &'static [SchemeDefinition] {

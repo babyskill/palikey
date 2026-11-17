@@ -29,6 +29,7 @@ class NativeEngine(
         const val SCHEME_VELTHUIS = 0
         const val SCHEME_PALI_TELEX = 1
         const val SCHEME_SIL = 2
+        const val SCHEME_VIETNAMESE_TELEX = 3
 
         const val NIGGAHITA_DOT_BELOW = 0 // ṃ (U+1E43) — PTS / SuttaCentral
         const val NIGGAHITA_DOT_ABOVE = 1 // ṁ (U+1E41) — VRI tradition

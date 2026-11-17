@@ -22,7 +22,8 @@ extern "C" {
 typedef enum {
     PALIKEY_SCHEME_VELTHUIS    = 0, /**< Velthuis (aa->ā, .t->ṭ, "n->ṅ, ~n->ñ, .m->ṃ) */
     PALIKEY_SCHEME_PALI_TELEX  = 1, /**< PaliTelex (aa->ā, tx->ṭ, ngw->ṅ, nw/ny->ñ, mx->ṃ) */
-    PALIKEY_SCHEME_SIL         = 2  /**< SIL / Keyman (-a->ā, .t->ṭ, >n->ṅ, ~n->ñ, .m->ṃ) */
+    PALIKEY_SCHEME_SIL         = 2, /**< SIL / Keyman (-a->ā, .t->ṭ, >n->ṅ, ~n->ñ, .m->ṃ) */
+    PALIKEY_SCHEME_VIET_TELEX  = 3  /**< Vietnamese Telex (clean-room Phase 5) */
 } PalikeySchemeId;
 
 /**

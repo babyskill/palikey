@@ -13,7 +13,7 @@
     },
     "scheme": {
       "type": "string",
-      "enum": ["velthuis", "palitelex", "sil"],
+      "enum": ["velthuis", "palitelex", "sil", "vietelex"],
       "default": "velthuis",
       "description": "Active input transliteration scheme"
     },

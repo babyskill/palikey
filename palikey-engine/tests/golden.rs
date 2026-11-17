@@ -90,7 +90,11 @@ static GOLDEN_CORPUS: &[GoldenCorpusWord] = &[
 fn simulate_typing(engine: &mut Engine, input: &str) -> String {
     let mut display = String::new();
     for c in input.chars() {
-        let res = engine.process(KeyAction::Char(c));
+        let res = if c == '\x08' {
+            engine.process(KeyAction::Backspace)
+        } else {
+            engine.process(KeyAction::Char(c))
+        };
         apply_result(&mut display, res);
     }
     display
@@ -499,4 +503,272 @@ fn test_digits_and_word_boundaries_flush_composition() {
 
     // Period followed by comma then 't' does NOT form .t
     assert_eq!(simulate_typing(&mut eng, ".,t"), ".,t");
+}
+
+// =============================================================================
+// Test 8: Vietnamese Telex Golden Corpus (Phase 5, >= 150 cases)
+// =============================================================================
+
+struct VietTelexCase {
+    input: &'static str,
+    expected: &'static str,
+}
+
+static VIETNAMESE_TELEX_CORPUS: &[VietTelexCase] = &[
+    // 1. Modifiers (9 cases)
+    VietTelexCase { input: "aa", expected: "â" },
+    VietTelexCase { input: "ee", expected: "ê" },
+    VietTelexCase { input: "oo", expected: "ô" },
+    VietTelexCase { input: "aw", expected: "ă" },
+    VietTelexCase { input: "ow", expected: "ơ" },
+    VietTelexCase { input: "uw", expected: "ư" },
+    VietTelexCase { input: "dd", expected: "đ" },
+    VietTelexCase { input: "w", expected: "ư" },
+    VietTelexCase { input: "uow", expected: "ươ" },
+
+    // 2. Modifier undos (9 cases)
+    VietTelexCase { input: "aaa", expected: "aa" },
+    VietTelexCase { input: "eee", expected: "ee" },
+    VietTelexCase { input: "ooo", expected: "oo" },
+    VietTelexCase { input: "aww", expected: "aw" },
+    VietTelexCase { input: "oww", expected: "ow" },
+    VietTelexCase { input: "uww", expected: "uw" },
+    VietTelexCase { input: "ddd", expected: "dd" },
+    VietTelexCase { input: "ww", expected: "w" },
+    VietTelexCase { input: "uoww", expected: "uow" },
+
+    // 3. All 5 tones on plain vowels (30 cases)
+    VietTelexCase { input: "as", expected: "á" },
+    VietTelexCase { input: "af", expected: "à" },
+    VietTelexCase { input: "ar", expected: "ả" },
+    VietTelexCase { input: "ax", expected: "ã" },
+    VietTelexCase { input: "aj", expected: "ạ" },
+    VietTelexCase { input: "es", expected: "é" },
+    VietTelexCase { input: "ef", expected: "è" },
+    VietTelexCase { input: "er", expected: "ẻ" },
+    VietTelexCase { input: "ex", expected: "ẽ" },
+    VietTelexCase { input: "ej", expected: "ẹ" },
+    VietTelexCase { input: "is", expected: "í" },
+    VietTelexCase { input: "if", expected: "ì" },
+    VietTelexCase { input: "ir", expected: "ỉ" },
+    VietTelexCase { input: "ix", expected: "ĩ" },
+    VietTelexCase { input: "ij", expected: "ị" },
+    VietTelexCase { input: "os", expected: "ó" },
+    VietTelexCase { input: "of", expected: "ò" },
+    VietTelexCase { input: "or", expected: "ỏ" },
+    VietTelexCase { input: "ox", expected: "õ" },
+    VietTelexCase { input: "oj", expected: "ọ" },
+    VietTelexCase { input: "us", expected: "ú" },
+    VietTelexCase { input: "uf", expected: "ù" },
+    VietTelexCase { input: "ur", expected: "ủ" },
+    VietTelexCase { input: "ux", expected: "ũ" },
+    VietTelexCase { input: "uj", expected: "ụ" },
+    VietTelexCase { input: "ys", expected: "ý" },
+    VietTelexCase { input: "yf", expected: "ỳ" },
+    VietTelexCase { input: "yr", expected: "ỷ" },
+    VietTelexCase { input: "yx", expected: "ỹ" },
+    VietTelexCase { input: "yj", expected: "ỵ" },
+
+    // 4. Tone z-removal (7 cases)
+    VietTelexCase { input: "asz", expected: "a" },
+    VietTelexCase { input: "afz", expected: "a" },
+    VietTelexCase { input: "arz", expected: "a" },
+    VietTelexCase { input: "axz", expected: "a" },
+    VietTelexCase { input: "ajz", expected: "a" },
+    VietTelexCase { input: "hoasz", expected: "hoa" },
+    VietTelexCase { input: "toansz", expected: "toan" },
+
+    // 5. Same-tone-twice -> literal (7 cases)
+    VietTelexCase { input: "ass", expected: "as" },
+    VietTelexCase { input: "aff", expected: "af" },
+    VietTelexCase { input: "arr", expected: "ar" },
+    VietTelexCase { input: "axx", expected: "ax" },
+    VietTelexCase { input: "ajj", expected: "aj" },
+    VietTelexCase { input: "toanss", expected: "toans" },
+    VietTelexCase { input: "hoass", expected: "hoas" },
+
+    // 6. Modifiers + tones combined (40 cases)
+    VietTelexCase { input: "aas", expected: "ấ" },
+    VietTelexCase { input: "aaf", expected: "ầ" },
+    VietTelexCase { input: "aar", expected: "ẩ" },
+    VietTelexCase { input: "aax", expected: "ẫ" },
+    VietTelexCase { input: "aaj", expected: "ậ" },
+    VietTelexCase { input: "aws", expected: "ắ" },
+    VietTelexCase { input: "awf", expected: "ằ" },
+    VietTelexCase { input: "awr", expected: "ẳ" },
+    VietTelexCase { input: "awx", expected: "ẵ" },
+    VietTelexCase { input: "awj", expected: "ặ" },
+    VietTelexCase { input: "ees", expected: "ế" },
+    VietTelexCase { input: "eef", expected: "ề" },
+    VietTelexCase { input: "eer", expected: "ể" },
+    VietTelexCase { input: "eex", expected: "ễ" },
+    VietTelexCase { input: "eej", expected: "ệ" },
+    VietTelexCase { input: "oos", expected: "ố" },
+    VietTelexCase { input: "oof", expected: "ồ" },
+    VietTelexCase { input: "oor", expected: "ổ" },
+    VietTelexCase { input: "oox", expected: "ỗ" },
+    VietTelexCase { input: "ooj", expected: "ộ" },
+    VietTelexCase { input: "ows", expected: "ớ" },
+    VietTelexCase { input: "owf", expected: "ờ" },
+    VietTelexCase { input: "owr", expected: "ở" },
+    VietTelexCase { input: "owx", expected: "ỡ" },
+    VietTelexCase { input: "owj", expected: "ợ" },
+    VietTelexCase { input: "uws", expected: "ứ" },
+    VietTelexCase { input: "uwf", expected: "ừ" },
+    VietTelexCase { input: "uwr", expected: "ử" },
+    VietTelexCase { input: "uwx", expected: "ữ" },
+    VietTelexCase { input: "uwj", expected: "ự" },
+    VietTelexCase { input: "uows", expected: "ứơ" },
+    VietTelexCase { input: "uowf", expected: "ừơ" },
+    VietTelexCase { input: "uowr", expected: "ửơ" },
+    VietTelexCase { input: "uowx", expected: "ữơ" },
+    VietTelexCase { input: "uowj", expected: "ựơ" },
+    VietTelexCase { input: "ddas", expected: "đá" },
+    VietTelexCase { input: "ddaf", expected: "đà" },
+    VietTelexCase { input: "ddar", expected: "đả" },
+    VietTelexCase { input: "ddax", expected: "đã" },
+    VietTelexCase { input: "ddaj", expected: "đạ" },
+
+    // 7. Rule 1: Nucleus of 1 vowel (12 cases)
+    VietTelexCase { input: "mas", expected: "má" },
+    VietTelexCase { input: "maf", expected: "mà" },
+    VietTelexCase { input: "mar", expected: "mả" },
+    VietTelexCase { input: "max", expected: "mã" },
+    VietTelexCase { input: "maj", expected: "mạ" },
+    VietTelexCase { input: "mes", expected: "mé" },
+    VietTelexCase { input: "mef", expected: "mè" },
+    VietTelexCase { input: "mer", expected: "mẻ" },
+    VietTelexCase { input: "mex", expected: "mẽ" },
+    VietTelexCase { input: "mej", expected: "mẹ" },
+    VietTelexCase { input: "gif", expected: "gì" },
+    VietTelexCase { input: "gis", expected: "gí" },
+
+    // 8. Rule 2: 2 vowels WITH coda -> 2nd vowel (12 cases)
+    VietTelexCase { input: "hoan", expected: "hoan" },
+    VietTelexCase { input: "hoanf", expected: "hoàn" },
+    VietTelexCase { input: "hoans", expected: "hoán" },
+    VietTelexCase { input: "toan", expected: "toan" },
+    VietTelexCase { input: "toans", expected: "toán" },
+    VietTelexCase { input: "toanf", expected: "toàn" },
+    VietTelexCase { input: "tieengs", expected: "tiếng" },
+    VietTelexCase { input: "tieengf", expected: "tiềng" },
+    VietTelexCase { input: "muoons", expected: "muốn" },
+    VietTelexCase { input: "muoonf", expected: "muồn" },
+    VietTelexCase { input: "dduowng", expected: "đương" },
+    VietTelexCase { input: "dduowngf", expected: "đường" },
+
+    // 9. Rule 3: 2 vowels WITHOUT coda (24 cases)
+    VietTelexCase { input: "biaj", expected: "bịa" },
+    VietTelexCase { input: "bias", expected: "bía" },
+    VietTelexCase { input: "muaf", expected: "mùa" },
+    VietTelexCase { input: "muas", expected: "múa" },
+    VietTelexCase { input: "cuwar", expected: "cửa" },
+    VietTelexCase { input: "cuwas", expected: "cứa" },
+    VietTelexCase { input: "cais", expected: "cái" },
+    VietTelexCase { input: "caif", expected: "cài" },
+    VietTelexCase { input: "caos", expected: "cáo" },
+    VietTelexCase { input: "caof", expected: "cào" },
+    VietTelexCase { input: "caus", expected: "cáu" },
+    VietTelexCase { input: "cays", expected: "cáy" },
+    VietTelexCase { input: "caaus", expected: "cấu" },
+    VietTelexCase { input: "caauf", expected: "cầu" },
+    VietTelexCase { input: "caays", expected: "cấy" },
+    VietTelexCase { input: "keos", expected: "kéo" },
+    VietTelexCase { input: "keeus", expected: "kếu" },
+    VietTelexCase { input: "chiuj", expected: "chịu" },
+    VietTelexCase { input: "tuis", expected: "túi" },
+    VietTelexCase { input: "nois", expected: "nói" },
+    VietTelexCase { input: "hoas", expected: "hoá" },
+    VietTelexCase { input: "khoer", expected: "khoẻ" },
+    VietTelexCase { input: "thuys", expected: "thuý" },
+    VietTelexCase { input: "huees", expected: "huế" },
+
+    // 10. Rule 4: 3 vowels -> middle vowel (10 cases)
+    VietTelexCase { input: "kieeuf", expected: "kiều" },
+    VietTelexCase { input: "kieeus", expected: "kiếu" },
+    VietTelexCase { input: "ngoaif", expected: "ngoài" },
+    VietTelexCase { input: "ngoais", expected: "ngoái" },
+    VietTelexCase { input: "tuooir", expected: "tuổi" },
+    VietTelexCase { input: "tuoois", expected: "tuối" },
+    VietTelexCase { input: "ruowuj", expected: "rượu" },
+    VietTelexCase { input: "ruowus", expected: "rướu" },
+    VietTelexCase { input: "khuyur", expected: "khuỷu" },
+    VietTelexCase { input: "khuyus", expected: "khuýu" },
+
+    // 11. Early tone + repositioning (4 cases)
+    VietTelexCase { input: "hosa", expected: "hoá" },
+    VietTelexCase { input: "toasn", expected: "toán" },
+    VietTelexCase { input: "tieefng", expected: "tiềng" },
+    VietTelexCase { input: "dduowjng", expected: "đượng" },
+
+    // 12. Post-coda tone (4 cases)
+    VietTelexCase { input: "sachs", expected: "sách" },
+    VietTelexCase { input: "hocj", expected: "học" },
+    VietTelexCase { input: "bieets", expected: "biết" },
+    VietTelexCase { input: "cuoocs", expected: "cuốc" },
+
+    // 13. Backspace chains (5 cases)
+    VietTelexCase { input: "as\x08", expected: "a" },
+    VietTelexCase { input: "aas\x08", expected: "â" },
+    VietTelexCase { input: "aa\x08", expected: "a" },
+    VietTelexCase { input: "dduowngf\x08", expected: "đương" },
+    VietTelexCase { input: "vieetj\x08", expected: "viêt" },
+
+    // 14. Full words and multi-word sentences (9 cases)
+    VietTelexCase { input: "vieetj", expected: "việt" },
+    VietTelexCase { input: "tieengs", expected: "tiếng" },
+    VietTelexCase { input: "dduowngf", expected: "đường" },
+    VietTelexCase { input: "chaof", expected: "chào" },
+    VietTelexCase { input: "xin chaof", expected: "xin chào" },
+    VietTelexCase { input: "tieengs vieetj", expected: "tiếng việt" },
+    VietTelexCase { input: "dduowngf veef", expected: "đường về" },
+    VietTelexCase { input: "nguowif vieetj", expected: "người việt" },
+    VietTelexCase { input: "haoj nam", expected: "hạo nam" },
+
+    // 15. Invalid syllable restore at word boundary (3 cases)
+    VietTelexCase { input: "qw ", expected: "qw " },
+    VietTelexCase { input: "xyz ", expected: "xyz " },
+    VietTelexCase { input: "st ", expected: "st " },
+
+    // 16. Standalone w (8 cases)
+    VietTelexCase { input: "w", expected: "ư" },
+    VietTelexCase { input: "ws", expected: "ứ" },
+    VietTelexCase { input: "wf", expected: "ừ" },
+    VietTelexCase { input: "wr", expected: "ử" },
+    VietTelexCase { input: "wx", expected: "ữ" },
+    VietTelexCase { input: "wj", expected: "ự" },
+    VietTelexCase { input: "wa", expected: "ưa" },
+    VietTelexCase { input: "was", expected: "ứa" },
+
+    // 17. Capitals (10 cases)
+    VietTelexCase { input: "DD", expected: "Đ" },
+    VietTelexCase { input: "Dd", expected: "Đ" },
+    VietTelexCase { input: "Aa", expected: "Â" },
+    VietTelexCase { input: "Aas", expected: "Ấ" },
+    VietTelexCase { input: "VIEETJ", expected: "VIỆT" },
+    VietTelexCase { input: "Vieetj", expected: "Việt" },
+    VietTelexCase { input: "TIEENGS", expected: "TIẾNG" },
+    VietTelexCase { input: "Tieengs", expected: "Tiếng" },
+    VietTelexCase { input: "DDUOWNGF", expected: "ĐƯỜNG" },
+    VietTelexCase { input: "Dduowngf", expected: "Đường" },
+];
+
+#[test]
+fn test_vietnamese_telex_golden_corpus() {
+    println!("Vietnamese Telex corpus size: {}", VIETNAMESE_TELEX_CORPUS.len());
+    assert!(
+        VIETNAMESE_TELEX_CORPUS.len() >= 150,
+        "Corpus must have at least 150 cases, but has {}",
+        VIETNAMESE_TELEX_CORPUS.len()
+    );
+
+    for (idx, tc) in VIETNAMESE_TELEX_CORPUS.iter().enumerate() {
+        let mut eng = Engine::with_scheme(SchemeId::VietnameseTelex);
+        let actual = simulate_typing(&mut eng, tc.input);
+        assert_eq!(
+            actual, tc.expected,
+            "Case #{idx} failed for input '{}': expected '{}', got '{}'",
+            tc.input, tc.expected, actual
+        );
+    }
 }

@@ -44,6 +44,7 @@ class AppPreferences(context: Context) {
             NativeEngine.SCHEME_VELTHUIS -> "Velthuis"
             NativeEngine.SCHEME_PALI_TELEX -> "PaliTelex"
             NativeEngine.SCHEME_SIL -> "SIL"
+            NativeEngine.SCHEME_VIETNAMESE_TELEX -> "Vietnamese (Telex)"
             else -> "Velthuis"
         }
 
