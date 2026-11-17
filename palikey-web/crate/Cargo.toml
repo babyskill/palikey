@@ -1,0 +1,14 @@
+[package]
+name = "palikey-web-wasm"
+version = "0.1.0"
+edition = "2021"
+authors = ["PaliKey Contributors"]
+license = "MIT"
+description = "WebAssembly bindings for PaliKey engine"
+
+[lib]
+name = "palikey_web"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+palikey-engine = { path = "../../palikey-engine" }

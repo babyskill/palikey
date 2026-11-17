@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<KeymanDeveloperProject>
+  <Options>
+    <BuildPath></BuildPath>
+    <CompilerWarningsAsErrors>False</CompilerWarningsAsErrors>
+    <WarnDeprecatedCode>True</WarnDeprecatedCode>
+    <CheckFilenameConventions>True</CheckFilenameConventions>
+    <ProjectType>keyboard</ProjectType>
+  </Options>
+  <Files>
+    <File>
+      <ID>id_palikey_kmn</ID>
+      <Filename>palikey.kmn</Filename>
+      <Filepath>palikey.kmn</Filepath>
+      <FileVersion>0.1.0</FileVersion>
+      <FileType>.kmn</FileType>
+      <Details>
+        <Name>PaliKey</Name>
+        <Copyright>© PaliKey Contributors</Copyright>
+        <Message>Cross-platform Pāḷi input method supporting PaliTelex and Velthuis conventions.</Message>
+      </Details>
+    </File>
+    <File>
+      <ID>id_readme</ID>
+      <Filename>README.md</Filename>
+      <Filepath>README.md</Filepath>
+      <FileVersion></FileVersion>
+      <FileType>.md</FileType>
+    </File>
+  </Files>
+</KeymanDeveloperProject>

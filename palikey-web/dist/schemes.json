@@ -1,0 +1,1186 @@
+{
+  "version": "0.1.0",
+  "schemes": {
+    "velthuis": {
+      "id": "velthuis",
+      "display_name": "Velthuis",
+      "description": "Academic standard (aa->ā, .t->ṭ, \"n->ṅ, ~n->ñ, .m->ṃ)",
+      "mappings": [
+        {
+          "sequence": "aa",
+          "char": "ā",
+          "char_dot_above": null,
+          "unicode": "U+0101",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Aa",
+          "char": "Ā",
+          "char_dot_above": null,
+          "unicode": "U+0100",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "AA",
+          "char": "Ā",
+          "char_dot_above": null,
+          "unicode": "U+0100",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "ii",
+          "char": "ī",
+          "char_dot_above": null,
+          "unicode": "U+012B",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Ii",
+          "char": "Ī",
+          "char_dot_above": null,
+          "unicode": "U+012A",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "II",
+          "char": "Ī",
+          "char_dot_above": null,
+          "unicode": "U+012A",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "uu",
+          "char": "ū",
+          "char_dot_above": null,
+          "unicode": "U+016B",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Uu",
+          "char": "Ū",
+          "char_dot_above": null,
+          "unicode": "U+016A",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "UU",
+          "char": "Ū",
+          "char_dot_above": null,
+          "unicode": "U+016A",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".t",
+          "char": "ṭ",
+          "char_dot_above": null,
+          "unicode": "U+1E6D",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".T",
+          "char": "Ṭ",
+          "char_dot_above": null,
+          "unicode": "U+1E6C",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".d",
+          "char": "ḍ",
+          "char_dot_above": null,
+          "unicode": "U+1E0D",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".D",
+          "char": "Ḍ",
+          "char_dot_above": null,
+          "unicode": "U+1E0C",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".n",
+          "char": "ṇ",
+          "char_dot_above": null,
+          "unicode": "U+1E47",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".N",
+          "char": "Ṇ",
+          "char_dot_above": null,
+          "unicode": "U+1E46",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".m",
+          "char": "ṃ",
+          "char_dot_above": "ṁ",
+          "unicode": "U+1E43",
+          "target_type": "niggahita",
+          "is_extended": false
+        },
+        {
+          "sequence": ".M",
+          "char": "Ṃ",
+          "char_dot_above": "Ṁ",
+          "unicode": "U+1E42",
+          "target_type": "niggahita",
+          "is_extended": false
+        },
+        {
+          "sequence": ".l",
+          "char": "ḷ",
+          "char_dot_above": null,
+          "unicode": "U+1E37",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".L",
+          "char": "Ḷ",
+          "char_dot_above": null,
+          "unicode": "U+1E36",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "\"n",
+          "char": "ṅ",
+          "char_dot_above": null,
+          "unicode": "U+1E45",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "\"N",
+          "char": "Ṅ",
+          "char_dot_above": null,
+          "unicode": "U+1E44",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "~n",
+          "char": "ñ",
+          "char_dot_above": null,
+          "unicode": "U+00F1",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "~N",
+          "char": "Ñ",
+          "char_dot_above": null,
+          "unicode": "U+00D1",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "ee",
+          "char": "ē",
+          "char_dot_above": null,
+          "unicode": "U+0113",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "Ee",
+          "char": "Ē",
+          "char_dot_above": null,
+          "unicode": "U+0112",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "EE",
+          "char": "Ē",
+          "char_dot_above": null,
+          "unicode": "U+0112",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "oo",
+          "char": "ō",
+          "char_dot_above": null,
+          "unicode": "U+014D",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "Oo",
+          "char": "Ō",
+          "char_dot_above": null,
+          "unicode": "U+014C",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "OO",
+          "char": "Ō",
+          "char_dot_above": null,
+          "unicode": "U+014C",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".rr",
+          "char": "ṝ",
+          "char_dot_above": null,
+          "unicode": "U+1E5D",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".Rr",
+          "char": "Ṝ",
+          "char_dot_above": null,
+          "unicode": "U+1E5C",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".RR",
+          "char": "Ṝ",
+          "char_dot_above": null,
+          "unicode": "U+1E5C",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "ṛr",
+          "char": "ṝ",
+          "char_dot_above": null,
+          "unicode": "U+1E5D",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "Ṛr",
+          "char": "Ṝ",
+          "char_dot_above": null,
+          "unicode": "U+1E5C",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "ṚR",
+          "char": "Ṝ",
+          "char_dot_above": null,
+          "unicode": "U+1E5C",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".r",
+          "char": "ṛ",
+          "char_dot_above": null,
+          "unicode": "U+1E5B",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".R",
+          "char": "Ṛ",
+          "char_dot_above": null,
+          "unicode": "U+1E5A",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".ll",
+          "char": "ḹ",
+          "char_dot_above": null,
+          "unicode": "U+1E39",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".Ll",
+          "char": "Ḹ",
+          "char_dot_above": null,
+          "unicode": "U+1E38",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".LL",
+          "char": "Ḹ",
+          "char_dot_above": null,
+          "unicode": "U+1E38",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "ḷl",
+          "char": "ḹ",
+          "char_dot_above": null,
+          "unicode": "U+1E39",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "Ḷl",
+          "char": "Ḹ",
+          "char_dot_above": null,
+          "unicode": "U+1E38",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "ḶL",
+          "char": "Ḹ",
+          "char_dot_above": null,
+          "unicode": "U+1E38",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".h",
+          "char": "ḥ",
+          "char_dot_above": null,
+          "unicode": "U+1E25",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".H",
+          "char": "Ḥ",
+          "char_dot_above": null,
+          "unicode": "U+1E24",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "\"s",
+          "char": "ś",
+          "char_dot_above": null,
+          "unicode": "U+015B",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "\"S",
+          "char": "Ś",
+          "char_dot_above": null,
+          "unicode": "U+015A",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".s",
+          "char": "ṣ",
+          "char_dot_above": null,
+          "unicode": "U+1E63",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".S",
+          "char": "Ṣ",
+          "char_dot_above": null,
+          "unicode": "U+1E62",
+          "target_type": "extended",
+          "is_extended": true
+        }
+      ]
+    },
+    "palitelex": {
+      "id": "palitelex",
+      "display_name": "PaliTelex",
+      "description": "Vietnamese Telex muscle memory (aa->ā, tx->ṭ, ngw->ṅ, nw/ny->ñ, mx->ṃ)",
+      "mappings": [
+        {
+          "sequence": "aa",
+          "char": "ā",
+          "char_dot_above": null,
+          "unicode": "U+0101",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Aa",
+          "char": "Ā",
+          "char_dot_above": null,
+          "unicode": "U+0100",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "AA",
+          "char": "Ā",
+          "char_dot_above": null,
+          "unicode": "U+0100",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "ii",
+          "char": "ī",
+          "char_dot_above": null,
+          "unicode": "U+012B",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Ii",
+          "char": "Ī",
+          "char_dot_above": null,
+          "unicode": "U+012A",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "II",
+          "char": "Ī",
+          "char_dot_above": null,
+          "unicode": "U+012A",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "uu",
+          "char": "ū",
+          "char_dot_above": null,
+          "unicode": "U+016B",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Uu",
+          "char": "Ū",
+          "char_dot_above": null,
+          "unicode": "U+016A",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "UU",
+          "char": "Ū",
+          "char_dot_above": null,
+          "unicode": "U+016A",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "tx",
+          "char": "ṭ",
+          "char_dot_above": null,
+          "unicode": "U+1E6D",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Tx",
+          "char": "Ṭ",
+          "char_dot_above": null,
+          "unicode": "U+1E6C",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "TX",
+          "char": "Ṭ",
+          "char_dot_above": null,
+          "unicode": "U+1E6C",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "dx",
+          "char": "ḍ",
+          "char_dot_above": null,
+          "unicode": "U+1E0D",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Dx",
+          "char": "Ḍ",
+          "char_dot_above": null,
+          "unicode": "U+1E0C",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "DX",
+          "char": "Ḍ",
+          "char_dot_above": null,
+          "unicode": "U+1E0C",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "nx",
+          "char": "ṇ",
+          "char_dot_above": null,
+          "unicode": "U+1E47",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Nx",
+          "char": "Ṇ",
+          "char_dot_above": null,
+          "unicode": "U+1E46",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "NX",
+          "char": "Ṇ",
+          "char_dot_above": null,
+          "unicode": "U+1E46",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "mx",
+          "char": "ṃ",
+          "char_dot_above": "ṁ",
+          "unicode": "U+1E43",
+          "target_type": "niggahita",
+          "is_extended": false
+        },
+        {
+          "sequence": "Mx",
+          "char": "Ṃ",
+          "char_dot_above": "Ṁ",
+          "unicode": "U+1E42",
+          "target_type": "niggahita",
+          "is_extended": false
+        },
+        {
+          "sequence": "MX",
+          "char": "Ṃ",
+          "char_dot_above": "Ṁ",
+          "unicode": "U+1E42",
+          "target_type": "niggahita",
+          "is_extended": false
+        },
+        {
+          "sequence": "lx",
+          "char": "ḷ",
+          "char_dot_above": null,
+          "unicode": "U+1E37",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Lx",
+          "char": "Ḷ",
+          "char_dot_above": null,
+          "unicode": "U+1E36",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "LX",
+          "char": "Ḷ",
+          "char_dot_above": null,
+          "unicode": "U+1E36",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "ngw",
+          "char": "ṅ",
+          "char_dot_above": null,
+          "unicode": "U+1E45",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Ngw",
+          "char": "Ṅ",
+          "char_dot_above": null,
+          "unicode": "U+1E44",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "NGW",
+          "char": "Ṅ",
+          "char_dot_above": null,
+          "unicode": "U+1E44",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "ngx",
+          "char": "ṅ",
+          "char_dot_above": null,
+          "unicode": "U+1E45",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Ngx",
+          "char": "Ṅ",
+          "char_dot_above": null,
+          "unicode": "U+1E44",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "NGX",
+          "char": "Ṅ",
+          "char_dot_above": null,
+          "unicode": "U+1E44",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "nw",
+          "char": "ñ",
+          "char_dot_above": null,
+          "unicode": "U+00F1",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Nw",
+          "char": "Ñ",
+          "char_dot_above": null,
+          "unicode": "U+00D1",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "NW",
+          "char": "Ñ",
+          "char_dot_above": null,
+          "unicode": "U+00D1",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "ny",
+          "char": "ñ",
+          "char_dot_above": null,
+          "unicode": "U+00F1",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "Ny",
+          "char": "Ñ",
+          "char_dot_above": null,
+          "unicode": "U+00D1",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "NY",
+          "char": "Ñ",
+          "char_dot_above": null,
+          "unicode": "U+00D1",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "~n",
+          "char": "ñ",
+          "char_dot_above": null,
+          "unicode": "U+00F1",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "~N",
+          "char": "Ñ",
+          "char_dot_above": null,
+          "unicode": "U+00D1",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "ee",
+          "char": "ē",
+          "char_dot_above": null,
+          "unicode": "U+0113",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "Ee",
+          "char": "Ē",
+          "char_dot_above": null,
+          "unicode": "U+0112",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "EE",
+          "char": "Ē",
+          "char_dot_above": null,
+          "unicode": "U+0112",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "oo",
+          "char": "ō",
+          "char_dot_above": null,
+          "unicode": "U+014D",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "Oo",
+          "char": "Ō",
+          "char_dot_above": null,
+          "unicode": "U+014C",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "OO",
+          "char": "Ō",
+          "char_dot_above": null,
+          "unicode": "U+014C",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "rrx",
+          "char": "ṝ",
+          "char_dot_above": null,
+          "unicode": "U+1E5D",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "Rrx",
+          "char": "Ṝ",
+          "char_dot_above": null,
+          "unicode": "U+1E5C",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "RRX",
+          "char": "Ṝ",
+          "char_dot_above": null,
+          "unicode": "U+1E5C",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "rx",
+          "char": "ṛ",
+          "char_dot_above": null,
+          "unicode": "U+1E5B",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "Rx",
+          "char": "Ṛ",
+          "char_dot_above": null,
+          "unicode": "U+1E5A",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "RX",
+          "char": "Ṛ",
+          "char_dot_above": null,
+          "unicode": "U+1E5A",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "llx",
+          "char": "ḹ",
+          "char_dot_above": null,
+          "unicode": "U+1E39",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "Llx",
+          "char": "Ḹ",
+          "char_dot_above": null,
+          "unicode": "U+1E38",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "LLX",
+          "char": "Ḹ",
+          "char_dot_above": null,
+          "unicode": "U+1E38",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "hx",
+          "char": "ḥ",
+          "char_dot_above": null,
+          "unicode": "U+1E25",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "Hx",
+          "char": "Ḥ",
+          "char_dot_above": null,
+          "unicode": "U+1E24",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "HX",
+          "char": "Ḥ",
+          "char_dot_above": null,
+          "unicode": "U+1E24",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "sx",
+          "char": "ṣ",
+          "char_dot_above": null,
+          "unicode": "U+1E63",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "Sx",
+          "char": "Ṣ",
+          "char_dot_above": null,
+          "unicode": "U+1E62",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "SX",
+          "char": "Ṣ",
+          "char_dot_above": null,
+          "unicode": "U+1E62",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "sw",
+          "char": "ś",
+          "char_dot_above": null,
+          "unicode": "U+015B",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "Sw",
+          "char": "Ś",
+          "char_dot_above": null,
+          "unicode": "U+015A",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "SW",
+          "char": "Ś",
+          "char_dot_above": null,
+          "unicode": "U+015A",
+          "target_type": "extended",
+          "is_extended": true
+        }
+      ]
+    },
+    "sil": {
+      "id": "sil",
+      "display_name": "SIL / Keyman",
+      "description": "Keyman Indic Roman Transliteration standard (-a->ā, .t->ṭ, >n->ṅ, ~n->ñ)",
+      "mappings": [
+        {
+          "sequence": "-a",
+          "char": "ā",
+          "char_dot_above": null,
+          "unicode": "U+0101",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "-A",
+          "char": "Ā",
+          "char_dot_above": null,
+          "unicode": "U+0100",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "-i",
+          "char": "ī",
+          "char_dot_above": null,
+          "unicode": "U+012B",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "-I",
+          "char": "Ī",
+          "char_dot_above": null,
+          "unicode": "U+012A",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "-u",
+          "char": "ū",
+          "char_dot_above": null,
+          "unicode": "U+016B",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "-U",
+          "char": "Ū",
+          "char_dot_above": null,
+          "unicode": "U+016A",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".t",
+          "char": "ṭ",
+          "char_dot_above": null,
+          "unicode": "U+1E6D",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".T",
+          "char": "Ṭ",
+          "char_dot_above": null,
+          "unicode": "U+1E6C",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".d",
+          "char": "ḍ",
+          "char_dot_above": null,
+          "unicode": "U+1E0D",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".D",
+          "char": "Ḍ",
+          "char_dot_above": null,
+          "unicode": "U+1E0C",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".n",
+          "char": "ṇ",
+          "char_dot_above": null,
+          "unicode": "U+1E47",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".N",
+          "char": "Ṇ",
+          "char_dot_above": null,
+          "unicode": "U+1E46",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".m",
+          "char": "ṃ",
+          "char_dot_above": "ṁ",
+          "unicode": "U+1E43",
+          "target_type": "niggahita",
+          "is_extended": false
+        },
+        {
+          "sequence": ".M",
+          "char": "Ṃ",
+          "char_dot_above": "Ṁ",
+          "unicode": "U+1E42",
+          "target_type": "niggahita",
+          "is_extended": false
+        },
+        {
+          "sequence": ".l",
+          "char": "ḷ",
+          "char_dot_above": null,
+          "unicode": "U+1E37",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ".L",
+          "char": "Ḷ",
+          "char_dot_above": null,
+          "unicode": "U+1E36",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ">n",
+          "char": "ṅ",
+          "char_dot_above": null,
+          "unicode": "U+1E45",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": ">N",
+          "char": "Ṅ",
+          "char_dot_above": null,
+          "unicode": "U+1E44",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "~n",
+          "char": "ñ",
+          "char_dot_above": null,
+          "unicode": "U+00F1",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "~N",
+          "char": "Ñ",
+          "char_dot_above": null,
+          "unicode": "U+00D1",
+          "target_type": "fixed",
+          "is_extended": false
+        },
+        {
+          "sequence": "-e",
+          "char": "ē",
+          "char_dot_above": null,
+          "unicode": "U+0113",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "-E",
+          "char": "Ē",
+          "char_dot_above": null,
+          "unicode": "U+0112",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "-o",
+          "char": "ō",
+          "char_dot_above": null,
+          "unicode": "U+014D",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "-O",
+          "char": "Ō",
+          "char_dot_above": null,
+          "unicode": "U+014C",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".r",
+          "char": "ṛ",
+          "char_dot_above": null,
+          "unicode": "U+1E5B",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".R",
+          "char": "Ṛ",
+          "char_dot_above": null,
+          "unicode": "U+1E5A",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "~r",
+          "char": "ṝ",
+          "char_dot_above": null,
+          "unicode": "U+1E5D",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "~R",
+          "char": "Ṝ",
+          "char_dot_above": null,
+          "unicode": "U+1E5C",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".h",
+          "char": "ḥ",
+          "char_dot_above": null,
+          "unicode": "U+1E25",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".H",
+          "char": "Ḥ",
+          "char_dot_above": null,
+          "unicode": "U+1E24",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".s",
+          "char": "ṣ",
+          "char_dot_above": null,
+          "unicode": "U+1E63",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": ".S",
+          "char": "Ṣ",
+          "char_dot_above": null,
+          "unicode": "U+1E62",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "~s",
+          "char": "ś",
+          "char_dot_above": null,
+          "unicode": "U+015B",
+          "target_type": "extended",
+          "is_extended": true
+        },
+        {
+          "sequence": "~S",
+          "char": "Ś",
+          "char_dot_above": null,
+          "unicode": "U+015A",
+          "target_type": "extended",
+          "is_extended": true
+        }
+      ]
+    }
+  }
+}

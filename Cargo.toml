@@ -1,5 +1,6 @@
 [workspace]
 members = [
     "palikey-engine",
+    "palikey-web/crate",
 ]
 resolver = "2"
