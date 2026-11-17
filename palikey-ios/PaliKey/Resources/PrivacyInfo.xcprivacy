@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- PaliKey does not track users across apps or websites -->
+    <key>NSPrivacyTracking</key>
+    <false/>
+    <key>NSPrivacyTrackingDomains</key>
+    <array/>
+    <!-- PaliKey does not collect any user data (no keystrokes, no diagnostics, no analytics) -->
+    <key>NSPrivacyCollectedDataTypes</key>
+    <array/>
+    <!-- PaliKey does not use any restricted or required reason APIs -->
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array/>
+</dict>
+</plist>

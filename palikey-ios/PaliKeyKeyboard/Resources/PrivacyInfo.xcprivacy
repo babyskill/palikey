@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- PaliKey Keyboard Extension does not track users -->
+    <key>NSPrivacyTracking</key>
+    <false/>
+    <key>NSPrivacyTrackingDomains</key>
+    <array/>
+    <!-- PaliKey Keyboard Extension does not collect any data (NO Full Access) -->
+    <key>NSPrivacyCollectedDataTypes</key>
+    <array/>
+    <!-- PaliKey does not access any restricted APIs -->
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array/>
+</dict>
+</plist>

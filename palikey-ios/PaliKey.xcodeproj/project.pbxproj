@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C3B7C689EAE9B23855D63C6 /* PaliEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A60FEC7BE35096052641714 /* PaliEngine.swift */; };
+		421BFABA297CA71898E4002D /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E94976EA8A24790B6DCEE /* KeyboardViewController.swift */; };
+		42EC08329BEC4123CA491A0C /* PaliKeyEngine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5534C1055D0B1CEF4585D1 /* PaliKeyEngine.xcframework */; };
+		5A0C762222D83AAD7911EBDB /* PaliPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDF360885B14EEDCD3051D /* PaliPreferences.swift */; };
+		6041C3889F5AAF51C04A3AF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E497D8D7E3A8ECA1C03A8622 /* ContentView.swift */; };
+		619CC2CF2835DEC715D3E07A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 327D53637463B996CA9C6988 /* PrivacyInfo.xcprivacy */; };
+		646BBE23BA943E5F4CE68814 /* PaliKeyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC72220E3AE72141CCE774 /* PaliKeyApp.swift */; };
+		7CE8DDE5128A82F82180BB84 /* PaliKeyKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E051C5CBBC35BDBC140BA217 /* PaliKeyKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7F4664B4AA64D524DED2CD00 /* PaliEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A60FEC7BE35096052641714 /* PaliEngine.swift */; };
+		8615A6E27BB5C9964E026CF1 /* PaliKeyEngine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5534C1055D0B1CEF4585D1 /* PaliKeyEngine.xcframework */; };
+		DF188D33CD265751170539F4 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65D68AA967F8D253A1E6C4 /* KeyboardView.swift */; };
+		EA333C622DFDB77E2BD68B6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 191DF33F349EC133F303507B /* Assets.xcassets */; };
+		ED402C66539A6ADDBE1AABA3 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92CB9E54125A54B8DAB42076 /* PrivacyInfo.xcprivacy */; };
+		F4EFE8D3EB020FF0A568A9C2 /* PaliPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDF360885B14EEDCD3051D /* PaliPreferences.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		64E1C9AAF69E18F811C08AA5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB18A701353BDD3C30B7B978 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AEBEBCDFE8FB62F382482FD4;
+			remoteInfo = PaliKeyKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B1198C2C70CE7A689A805008 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7CE8DDE5128A82F82180BB84 /* PaliKeyKeyboard.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		098E94976EA8A24790B6DCEE /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		0F08DD71F935774F6C9BD0DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		191DF33F349EC133F303507B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1E65D68AA967F8D253A1E6C4 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		31CFE35576AB10053BF467C6 /* PaliKey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PaliKey.entitlements; sourceTree = "<group>"; };
+		327D53637463B996CA9C6988 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		33EC72220E3AE72141CCE774 /* PaliKeyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaliKeyApp.swift; sourceTree = "<group>"; };
+		536C3EEFEF887EFACB4194A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5F58F6107E9C2EFC81B4759C /* PaliKeyKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PaliKeyKeyboard.entitlements; sourceTree = "<group>"; };
+		67D4C4FAFC32B644C438AF77 /* PaliKey.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PaliKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A60FEC7BE35096052641714 /* PaliEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaliEngine.swift; sourceTree = "<group>"; };
+		92CB9E54125A54B8DAB42076 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		C9CDF360885B14EEDCD3051D /* PaliPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaliPreferences.swift; sourceTree = "<group>"; };
+		E051C5CBBC35BDBC140BA217 /* PaliKeyKeyboard.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = PaliKeyKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E497D8D7E3A8ECA1C03A8622 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		ED5534C1055D0B1CEF4585D1 /* PaliKeyEngine.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PaliKeyEngine.xcframework; path = Frameworks/PaliKeyEngine.xcframework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6602DEE8EB6ACBE1CD7E05D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8615A6E27BB5C9964E026CF1 /* PaliKeyEngine.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD022D13B16011F5B425B7EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42EC08329BEC4123CA491A0C /* PaliKeyEngine.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		166A80F6D6D7660048423DC7 /* PaliKeyKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				1E65D68AA967F8D253A1E6C4 /* KeyboardView.swift */,
+				098E94976EA8A24790B6DCEE /* KeyboardViewController.swift */,
+				5F58F6107E9C2EFC81B4759C /* PaliKeyKeyboard.entitlements */,
+				C8025155ACDD3EAEC102F6D4 /* Resources */,
+			);
+			path = PaliKeyKeyboard;
+			sourceTree = "<group>";
+		};
+		2A8C114451F92049011F42C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED5534C1055D0B1CEF4585D1 /* PaliKeyEngine.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		366B52270D18700A0D49B49B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				33EC72220E3AE72141CCE774 /* PaliKeyApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		69C896DB5C041B8795034628 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				191DF33F349EC133F303507B /* Assets.xcassets */,
+				0F08DD71F935774F6C9BD0DB /* Info.plist */,
+				92CB9E54125A54B8DAB42076 /* PrivacyInfo.xcprivacy */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		975F0B7EC5B1303A2BAD8B72 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E497D8D7E3A8ECA1C03A8622 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AADB32095EAC1D457F14B781 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				6A60FEC7BE35096052641714 /* PaliEngine.swift */,
+				C9CDF360885B14EEDCD3051D /* PaliPreferences.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		C8025155ACDD3EAEC102F6D4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				536C3EEFEF887EFACB4194A9 /* Info.plist */,
+				327D53637463B996CA9C6988 /* PrivacyInfo.xcprivacy */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D9C0557D3E83D65936593210 /* PaliKey */ = {
+			isa = PBXGroup;
+			children = (
+				31CFE35576AB10053BF467C6 /* PaliKey.entitlements */,
+				366B52270D18700A0D49B49B /* App */,
+				69C896DB5C041B8795034628 /* Resources */,
+				975F0B7EC5B1303A2BAD8B72 /* Views */,
+			);
+			path = PaliKey;
+			sourceTree = "<group>";
+		};
+		E1095BB12D52E1BD6B32B947 = {
+			isa = PBXGroup;
+			children = (
+				D9C0557D3E83D65936593210 /* PaliKey */,
+				166A80F6D6D7660048423DC7 /* PaliKeyKeyboard */,
+				AADB32095EAC1D457F14B781 /* Shared */,
+				2A8C114451F92049011F42C5 /* Frameworks */,
+				E47BAAA5F9251522F179F01A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E47BAAA5F9251522F179F01A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67D4C4FAFC32B644C438AF77 /* PaliKey.app */,
+				E051C5CBBC35BDBC140BA217 /* PaliKeyKeyboard.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9B68CA5046521C39E915A77A /* PaliKey */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2944849142CE7093A0779745 /* Build configuration list for PBXNativeTarget "PaliKey" */;
+			buildPhases = (
+				8504CEBFC907265172D54161 /* Sources */,
+				93B1F2058A08BB9139F3BE7A /* Resources */,
+				FD022D13B16011F5B425B7EA /* Frameworks */,
+				B1198C2C70CE7A689A805008 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				143A80D0EA5E05D293B73A24 /* PBXTargetDependency */,
+			);
+			name = PaliKey;
+			packageProductDependencies = (
+			);
+			productName = PaliKey;
+			productReference = 67D4C4FAFC32B644C438AF77 /* PaliKey.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AEBEBCDFE8FB62F382482FD4 /* PaliKeyKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD964964CF98831C570FBB5E /* Build configuration list for PBXNativeTarget "PaliKeyKeyboard" */;
+			buildPhases = (
+				A39BE5A8A0D8BCD1B3BA6D50 /* Sources */,
+				924336420AA8E6033D68C14B /* Resources */,
+				6602DEE8EB6ACBE1CD7E05D5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PaliKeyKeyboard;
+			packageProductDependencies = (
+			);
+			productName = PaliKeyKeyboard;
+			productReference = E051C5CBBC35BDBC140BA217 /* PaliKeyKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB18A701353BDD3C30B7B978 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					9B68CA5046521C39E915A77A = {
+						DevelopmentTeam = "";
+					};
+					AEBEBCDFE8FB62F382482FD4 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = 06868555391210FE6632482B /* Build configuration list for PBXProject "PaliKey" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = E1095BB12D52E1BD6B32B947;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E47BAAA5F9251522F179F01A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9B68CA5046521C39E915A77A /* PaliKey */,
+				AEBEBCDFE8FB62F382482FD4 /* PaliKeyKeyboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		924336420AA8E6033D68C14B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				619CC2CF2835DEC715D3E07A /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93B1F2058A08BB9139F3BE7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA333C622DFDB77E2BD68B6C /* Assets.xcassets in Resources */,
+				ED402C66539A6ADDBE1AABA3 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8504CEBFC907265172D54161 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6041C3889F5AAF51C04A3AF4 /* ContentView.swift in Sources */,
+				1C3B7C689EAE9B23855D63C6 /* PaliEngine.swift in Sources */,
+				646BBE23BA943E5F4CE68814 /* PaliKeyApp.swift in Sources */,
+				F4EFE8D3EB020FF0A568A9C2 /* PaliPreferences.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A39BE5A8A0D8BCD1B3BA6D50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF188D33CD265751170539F4 /* KeyboardView.swift in Sources */,
+				421BFABA297CA71898E4002D /* KeyboardViewController.swift in Sources */,
+				7F4664B4AA64D524DED2CD00 /* PaliEngine.swift in Sources */,
+				5A0C762222D83AAD7911EBDB /* PaliPreferences.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		143A80D0EA5E05D293B73A24 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AEBEBCDFE8FB62F382482FD4 /* PaliKeyKeyboard */;
+			targetProxy = 64E1C9AAF69E18F811C08AA5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		36C568EA0695F73B204A3ED8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		550A9F627D20DD8E8E28B433 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5E062EBF476E72C7A62CE6CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PaliKeyKeyboard/PaliKeyKeyboard.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PaliKeyKeyboard/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.giacngo.palikey.keyboard;
+				PRODUCT_NAME = PaliKeyKeyboard;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		81E517BF1B0E87187C472C42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PaliKey/PaliKey.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PaliKey/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.giacngo.palikey;
+				PRODUCT_NAME = PaliKey;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		86C6D72FC8D745E498BEE157 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PaliKey/PaliKey.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PaliKey/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.giacngo.palikey;
+				PRODUCT_NAME = PaliKey;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BC972AEC22FEAB10F98D0205 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PaliKeyKeyboard/PaliKeyKeyboard.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PaliKeyKeyboard/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.giacngo.palikey.keyboard;
+				PRODUCT_NAME = PaliKeyKeyboard;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06868555391210FE6632482B /* Build configuration list for PBXProject "PaliKey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				550A9F627D20DD8E8E28B433 /* Debug */,
+				36C568EA0695F73B204A3ED8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		2944849142CE7093A0779745 /* Build configuration list for PBXNativeTarget "PaliKey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81E517BF1B0E87187C472C42 /* Debug */,
+				86C6D72FC8D745E498BEE157 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CD964964CF98831C570FBB5E /* Build configuration list for PBXNativeTarget "PaliKeyKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E062EBF476E72C7A62CE6CF /* Debug */,
+				BC972AEC22FEAB10F98D0205 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AB18A701353BDD3C30B7B978 /* Project object */;
+}

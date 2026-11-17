@@ -1,0 +1,55 @@
+name: PaliKey
+options:
+  bundleIdPrefix: org.giacngo
+  deploymentTarget:
+    iOS: "15.0"
+  xcodeVersion: "16.0"
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "15.0"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGNING_REQUIRED: "NO"
+    CODE_SIGNING_ALLOWED: "NO"
+
+targets:
+  PaliKey:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: PaliKey
+      - path: Shared
+    dependencies:
+      - framework: Frameworks/PaliKeyEngine.xcframework
+        embed: false
+      - target: PaliKeyKeyboard
+    settings:
+      base:
+        PRODUCT_NAME: PaliKey
+        PRODUCT_BUNDLE_IDENTIFIER: org.giacngo.palikey
+        INFOPLIST_FILE: PaliKey/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: PaliKey/PaliKey.entitlements
+        GENERATE_INFOPLIST_FILE: false
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+
+  PaliKeyKeyboard:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: PaliKeyKeyboard
+      - path: Shared
+    dependencies:
+      - framework: Frameworks/PaliKeyEngine.xcframework
+        embed: false
+    settings:
+      base:
+        PRODUCT_NAME: PaliKeyKeyboard
+        PRODUCT_BUNDLE_IDENTIFIER: org.giacngo.palikey.keyboard
+        INFOPLIST_FILE: PaliKeyKeyboard/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: PaliKeyKeyboard/PaliKeyKeyboard.entitlements
+        GENERATE_INFOPLIST_FILE: false

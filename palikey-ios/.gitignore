@@ -1,0 +1,8 @@
+# Xcode user-specific files
+xcuserdata/
+*.xcuserstate
+project.xcworkspace/xcuserdata/
+
+# Build outputs
+build/
+DerivedData/
