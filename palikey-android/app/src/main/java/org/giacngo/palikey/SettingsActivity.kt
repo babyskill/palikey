@@ -20,12 +20,12 @@ import android.widget.*
  * Settings Activity for PaliKey.
  *
  * Provides:
- * 1. Transliteration scheme selector (Velthuis, PaliTelex, SIL)
+ * 1. Pāḷi transliteration variant picker (Velthuis, PaliTelex, SIL)
  * 2. Niggahīta orthography toggle (ṃ Dot Below vs ṁ Dot Above)
  * 3. Extended Sanskrit/IAST character set toggle
  * 4. "Enable PaliKey" button (Settings.ACTION_INPUT_METHOD_SETTINGS)
  * 5. "Select PaliKey" button (InputMethodManager.showInputMethodPicker)
- * 6. Live test typing input field
+ * 6. Live test typing input field in active input mode
  * 7. Engine version and status indicator
  */
 class SettingsActivity : Activity() {
@@ -40,7 +40,6 @@ class SettingsActivity : Activity() {
     private val colorTextSecondary = Color.parseColor("#8B949E")
     private val colorAccent = Color.parseColor("#1F6FEB")
     private val colorAccentHover = Color.parseColor("#388BFD")
-    private val colorPaliTag = Color.parseColor("#238636")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,23 +104,22 @@ class SettingsActivity : Activity() {
 
         container.addView(activationCard)
 
-        // Transliteration Scheme Card
-        container.addView(createSectionHeader("TRANSLITERATION SCHEME"))
-        val schemeCard = createCardLayout()
+        // Pāḷi Transliteration Variant Card (§Part B.1 & B.2)
+        container.addView(createSectionHeader("PĀḶI TRANSLITERATION VARIANT"))
+        val variantCard = createCardLayout()
 
-        val schemeGroup = RadioGroup(this).apply {
+        val variantGroup = RadioGroup(this).apply {
             orientation = RadioGroup.VERTICAL
         }
 
-        val schemes = listOf(
+        val variants = listOf(
             Triple(NativeEngine.SCHEME_VELTHUIS, "Velthuis (Academic Standard)", "aa→ā, .t→ṭ, \"n→ṅ, ~n→ñ, .m→ṃ"),
             Triple(NativeEngine.SCHEME_PALI_TELEX, "PaliTelex (Vietnamese-friendly)", "aa→ā, tx→ṭ, ngw→ṅ, nw/ny→ñ, mx→ṃ"),
-            Triple(NativeEngine.SCHEME_SIL, "SIL / Keyman Compatible", "-a→ā, .t→ṭ, >n→ṅ, ~n→ñ, .m→ṃ"),
-            Triple(NativeEngine.SCHEME_VIETNAMESE_TELEX, "Vietnamese (Telex)", "aa→â, aw→ă, dd→đ, s/f/r/x/j = sắc/huyền/hỏi/ngã/nặng")
+            Triple(NativeEngine.SCHEME_SIL, "SIL / Keyman Compatible", "-a→ā, .t→ṭ, >n→ṅ, ~n→ñ, .m→ṃ")
         )
 
-        val currentScheme = preferences.schemeId
-        for ((id, title, example) in schemes) {
+        val currentVariant = preferences.paliVariant
+        for ((id, title, example) in variants) {
             val rb = RadioButton(this).apply {
                 this.id = View.generateViewId()
                 text = "$title\n$example"
@@ -129,17 +127,26 @@ class SettingsActivity : Activity() {
                 textSize = 14f
                 setLineSpacing(dp(2).toFloat(), 1.1f)
                 setPadding(dp(8), dp(8), dp(8), dp(8))
-                isChecked = (id == currentScheme)
+                isChecked = (id == currentVariant)
                 setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) {
-                        preferences.schemeId = id
+                        preferences.paliVariant = id
                     }
                 }
             }
-            schemeGroup.addView(rb)
+            variantGroup.addView(rb)
         }
-        schemeCard.addView(schemeGroup)
-        container.addView(schemeCard)
+        variantCard.addView(variantGroup)
+        container.addView(variantCard)
+
+        // Hint line under the card (§Part B.3)
+        val modeHintText = TextView(this).apply {
+            text = "Switch mode (Tiếng Việt / English / Pāḷi) with the mode key on the keyboard."
+            textSize = 12f
+            setTextColor(colorTextSecondary)
+            setPadding(dp(4), 0, dp(4), dp(8))
+        }
+        container.addView(modeHintText)
 
         // Orthography Card (Niggahīta & Extended Set)
         container.addView(createSectionHeader("ORTHOGRAPHY & VARIANTS"))
@@ -205,7 +212,7 @@ class SettingsActivity : Activity() {
 
         container.addView(orthographyCard)
 
-        // Live Test Field Card
+        // Live Test Field Card (§Part B.4)
         container.addView(createSectionHeader("TEST TYPING AREA"))
         val testCard = createCardLayout()
 

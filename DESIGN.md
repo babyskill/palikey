@@ -208,6 +208,13 @@ DECIDED 2026-11-17 (Owner, Phase 5): Vietnamese Telex added as scheme 4
 bilingual Vietnamese and Pāḷi input in a single keyboard without third-party
 IME dependencies.
 
+DECIDED 2026-11-18 (Owner, Phase 6): Three-mode cycle Vietnamese → English → Pāḷi
+(and back to Vietnamese) on the phone keyboard in fixed sequence with immediate
+persistence. Vietnamese uses engine scheme 3 (vietelex); English operates in plain
+passthrough (composition OFF); Pāḷi uses the persisted Pāḷi variant (0/1/2) with
+the top diacritic row visible. Pāḷi variant selection stays a dedicated choice in
+Settings, decoupling mode cycling from variant selection.
+
 1. **License/approach:** clean-room MIT (recommended, §2) vs fork vnkey under
    GPL-3.0. → DECIDED: clean-room MIT.
 2. **Product name:** codename `palikey` for the repo. Store-facing name cannot

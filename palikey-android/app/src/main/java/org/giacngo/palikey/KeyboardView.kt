@@ -2,11 +2,9 @@ package org.giacngo.palikey
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.RippleDrawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Handler
 import android.os.Looper
@@ -14,7 +12,6 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 
@@ -27,7 +24,7 @@ interface KeyboardActionListener {
     fun onBackspace()
     fun onSpace()
     fun onEnter()
-    fun onModeChanged(newMode: KeyboardMode)
+    fun onModeChanged(newMode: InputMode)
     fun onOpenSettings()
 }
 
@@ -36,8 +33,8 @@ interface KeyboardActionListener {
  *
  * Provides:
  * 1. Standard QWERTY letter rows
- * 2. Dedicated/toggleable Pāḷi row (ā ī ū ṅ ñ ṭ ḍ ṇ ḷ ṃ) with uppercase support
- * 3. Mode switching key: Transducer → Pāḷi Row → Off(plain)
+ * 2. Dedicated Pāḷi diacritic top row (ā ī ū ṅ ñ ṭ ḍ ṇ ḷ ṃ) shown exclusively in PALI mode
+ * 3. Three-mode cycling key: Tiếng Việt → English → Pāḷi → (back to Tiếng Việt)
  * 4. Numeric & Symbol layout (?123 / ABC)
  * 5. Smooth touch & ripple effects with backspace repeat
  */
@@ -50,7 +47,6 @@ class KeyboardView(
 
     private var isShifted = false
     private var isSymbolsMode = false
-    private var isPaliRowExplicitlyVisible = false
 
     private val handler = Handler(Looper.getMainLooper())
     private var backspaceRunnable: Runnable? = null
@@ -99,16 +95,11 @@ class KeyboardView(
     /* ========================================================================= */
 
     private fun buildAlphaLayout() {
-        val mode = preferences.keyboardMode
-        val isVietnamese = preferences.schemeId == NativeEngine.SCHEME_VIETNAMESE_TELEX
+        val mode = preferences.inputMode
 
-        // 1. Pāḷi Row
-        // Visible when mode is PALI_ROW or when user explicitly toggled it in TRANSDUCER mode
-        // In Vietnamese mode, there is NO Pāḷi top row (§Part B)
-        val showPaliRow = !isVietnamese && ((mode == KeyboardMode.PALI_ROW) ||
-                (mode == KeyboardMode.TRANSDUCER && isPaliRowExplicitlyVisible))
-
-        if (showPaliRow) {
+        // 1. Pāḷi Row: Shown exclusively in PALI mode (§Part A.4)
+        // VIETNAMESE and ENGLISH modes have NO Pāḷi diacritic top row
+        if (mode == InputMode.PALI) {
             addView(createPaliRow())
         }
 
@@ -156,7 +147,7 @@ class KeyboardView(
         row3Layout.addView(backspaceKey)
         addView(row3Layout)
 
-        // 5. Bottom Row: [?123] [Mode] [Space] [PaliToggle/.] [Enter]
+        // 5. Bottom Row: [?123] [Mode] [Space] [.] [Enter]
         addView(createBottomRow())
     }
 
@@ -222,7 +213,7 @@ class KeyboardView(
         row3.addView(createBackspaceKey(weight = 1.5f))
         addView(row3)
 
-        // Row 4: [ABC] [Mode] [Space] [,] [.] [Enter]
+        // Row 4: [ABC] [,] [Space] [.] [Enter]
         addView(createSymbolsBottomRow())
     }
 
@@ -246,22 +237,12 @@ class KeyboardView(
         }
         row.addView(symKey)
 
-        // Mode cycling key: Transducer → Pāḷi Row → Off
-        val mode = preferences.keyboardMode
-        val isVietnamese = preferences.schemeId == NativeEngine.SCHEME_VIETNAMESE_TELEX
-        val modeLabel = when {
-            mode == KeyboardMode.OFF -> "⌨️ Off"
-            isVietnamese -> "Tiếng Việt"
-            mode == KeyboardMode.PALI_ROW -> "🔤 Pāḷi Row"
-            else -> "⚡ ${preferences.schemeName}"
-        }
+        // Mode cycling key: Tiếng Việt → English → Pāḷi → Tiếng Việt
+        val mode = preferences.inputMode
+        val modeLabel = mode.label
         val modeKey = createSpecialKey(modeLabel, weight = 1.7f) {
-            val nextMode = when (mode) {
-                KeyboardMode.TRANSDUCER -> if (isVietnamese) KeyboardMode.OFF else KeyboardMode.PALI_ROW
-                KeyboardMode.PALI_ROW -> KeyboardMode.OFF
-                KeyboardMode.OFF -> KeyboardMode.TRANSDUCER
-            }
-            preferences.keyboardMode = nextMode
+            val nextMode = mode.next()
+            preferences.inputMode = nextMode
             listener.onModeChanged(nextMode)
             rebuildLayout()
         }
@@ -272,30 +253,16 @@ class KeyboardView(
         row.addView(modeKey)
 
         // Spacebar
-        val spaceLabel = when (mode) {
-            KeyboardMode.TRANSDUCER -> "PaliKey • Space"
-            KeyboardMode.PALI_ROW -> "Space"
-            KeyboardMode.OFF -> "English"
-        }
-        val spaceKey = createKey(spaceLabel, weight = 3.6f) {
+        val spaceKey = createKey("Space", weight = 3.6f) {
             listener.onSpace()
         }
         row.addView(spaceKey)
 
-        // Pāḷi Row quick toggle or dot
-        if (mode == KeyboardMode.TRANSDUCER && !isVietnamese) {
-            val toggleLabel = if (isPaliRowExplicitlyVisible) "▲ Pāḷi" else "▼ Pāḷi"
-            val paliToggleKey = createSpecialKey(toggleLabel, weight = 1.2f) {
-                isPaliRowExplicitlyVisible = !isPaliRowExplicitlyVisible
-                rebuildLayout()
-            }
-            row.addView(paliToggleKey)
-        } else {
-            val dotKey = createKey(".", weight = 1.1f) {
-                listener.onChar('.')
-            }
-            row.addView(dotKey)
+        // Dot key '.' present across all modes (§Part A.4)
+        val dotKey = createKey(".", weight = 1.1f) {
+            listener.onChar('.')
         }
+        row.addView(dotKey)
 
         // Enter key
         val enterKey = createSpecialKey("↵", weight = 1.4f, customBgColor = colorKeyAccent) {

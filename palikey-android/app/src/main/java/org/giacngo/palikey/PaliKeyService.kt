@@ -1,6 +1,7 @@
 package org.giacngo.palikey
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.inputmethodservice.InputMethodService
 import android.view.KeyEvent
 import android.view.View
@@ -11,6 +12,7 @@ import android.view.inputmethod.EditorInfo
  *
  * Hosts a NativeEngine instance per session, translates keystrokes via
  * the Rust engine's state machine, and applies ProcessResults through InputConnection.
+ * Supports the 3-mode input model: Vietnamese → English → Pāḷi.
  */
 class PaliKeyService : InputMethodService(), KeyboardActionListener {
 
@@ -18,19 +20,42 @@ class PaliKeyService : InputMethodService(), KeyboardActionListener {
     private var engine: NativeEngine? = null
     private var keyboardView: KeyboardView? = null
 
+    private val prefsListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+        when (key) {
+            AppPreferences.KEY_INPUT_MODE, AppPreferences.KEY_PALI_VARIANT -> {
+                syncEngineScheme()
+                keyboardView?.refresh()
+            }
+            AppPreferences.KEY_NIGGAHITA, AppPreferences.KEY_EXTENDED_SET -> {
+                initializeEngine()
+                keyboardView?.refresh()
+            }
+        }
+    }
+
     override fun onCreate() {
         super.onCreate()
         preferences = AppPreferences(this)
+        preferences.registerListener(prefsListener)
         initializeEngine()
     }
 
     private fun initializeEngine() {
         engine?.close()
+        val scheme = preferences.activeEngineScheme ?: preferences.paliVariant
         engine = NativeEngine(
-            schemeId = preferences.schemeId,
+            schemeId = scheme,
             niggahita = preferences.niggahitaVariant,
             extendedSet = preferences.isExtendedSetEnabled
         )
+    }
+
+    private fun syncEngineScheme() {
+        val scheme = preferences.activeEngineScheme
+        if (scheme != null) {
+            engine?.setScheme(scheme)
+        }
+        engine?.reset()
     }
 
     override fun onCreateInputView(): View {
@@ -45,8 +70,7 @@ class PaliKeyService : InputMethodService(), KeyboardActionListener {
         if (engine == null || !engine!!.isValid) {
             initializeEngine()
         } else {
-            engine?.setScheme(preferences.schemeId)
-            engine?.reset()
+            syncEngineScheme()
         }
 
         keyboardView?.refresh()
@@ -59,6 +83,7 @@ class PaliKeyService : InputMethodService(), KeyboardActionListener {
 
     override fun onDestroy() {
         super.onDestroy()
+        preferences.unregisterListener(prefsListener)
         engine?.close()
         engine = null
     }
@@ -70,13 +95,13 @@ class PaliKeyService : InputMethodService(), KeyboardActionListener {
     override fun onChar(c: Char) {
         val ic = currentInputConnection ?: return
 
-        when (preferences.keyboardMode) {
-            KeyboardMode.TRANSDUCER -> {
+        when (preferences.inputMode) {
+            InputMode.VIETNAMESE, InputMode.PALI -> {
                 val safeEngine = engine ?: return ic.commitText(c.toString(), 1).let { }
                 val result = safeEngine.process(c)
                 applyProcessResult(result)
             }
-            KeyboardMode.PALI_ROW, KeyboardMode.OFF -> {
+            InputMode.ENGLISH -> {
                 ic.commitText(c.toString(), 1)
             }
         }
@@ -93,15 +118,20 @@ class PaliKeyService : InputMethodService(), KeyboardActionListener {
     override fun onBackspace() {
         val ic = currentInputConnection ?: return
 
-        if (preferences.keyboardMode == KeyboardMode.TRANSDUCER) {
-            val safeEngine = engine
-            if (safeEngine != null) {
-                val result = safeEngine.processBackspace()
-                // If the engine handled undo (e.g. reverted composed character)
-                if (result.backspaces > 0 || result.commit.isNotEmpty()) {
-                    applyProcessResult(result)
-                    return
+        when (preferences.inputMode) {
+            InputMode.VIETNAMESE, InputMode.PALI -> {
+                val safeEngine = engine
+                if (safeEngine != null) {
+                    val result = safeEngine.processBackspace()
+                    // If the engine handled undo (e.g. reverted composed character)
+                    if (result.backspaces > 0 || result.commit.isNotEmpty()) {
+                        applyProcessResult(result)
+                        return
+                    }
                 }
+            }
+            InputMode.ENGLISH -> {
+                // Passthrough mode: fallback to standard delete
             }
         }
 
@@ -112,12 +142,17 @@ class PaliKeyService : InputMethodService(), KeyboardActionListener {
     override fun onSpace() {
         val ic = currentInputConnection ?: return
 
-        if (preferences.keyboardMode == KeyboardMode.TRANSDUCER) {
-            val safeEngine = engine
-            if (safeEngine != null) {
-                val result = safeEngine.process(' ')
-                applyProcessResult(result)
-                return
+        when (preferences.inputMode) {
+            InputMode.VIETNAMESE, InputMode.PALI -> {
+                val safeEngine = engine
+                if (safeEngine != null) {
+                    val result = safeEngine.process(' ')
+                    applyProcessResult(result)
+                    return
+                }
+            }
+            InputMode.ENGLISH -> {
+                // Passthrough mode
             }
         }
 
@@ -137,8 +172,8 @@ class PaliKeyService : InputMethodService(), KeyboardActionListener {
         }
     }
 
-    override fun onModeChanged(newMode: KeyboardMode) {
-        engine?.reset()
+    override fun onModeChanged(newMode: InputMode) {
+        syncEngineScheme()
     }
 
     override fun onOpenSettings() {
