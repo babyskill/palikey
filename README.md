@@ -10,7 +10,7 @@ Clean-room open-source implementation (MIT License) following the core-and-shell
 
 ## Download
 
-Official pre-built binaries are attached to each [GitHub Release](https://github.com/giacngo/palikey/releases):
+Official pre-built binaries are attached to each [GitHub Release](https://github.com/babyskill/palikey/releases):
 
 - **macOS (Universal arm64 + x86_64)**: `PaliKeyboard-macOS.zip`
   Universal InputMethodKit bundle (`PaliKey.app`). Extract to `~/Library/Input Methods/`, log out and back in, then enable in *System Settings $\rightarrow$ Keyboard $\rightarrow$ Text Input $\rightarrow$ Input Sources*.
