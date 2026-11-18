@@ -4,51 +4,43 @@
 
 One Pāḷi input method for every platform — one Rust engine, one shared transliteration standard, and native shells for Windows, macOS, Linux, Android, iOS, and Web.
 
-Clean-room implementation (MIT License) following the core-and-shell architecture specified in [DESIGN.md](DESIGN.md).
+Clean-room open-source implementation (MIT License) following the core-and-shell architecture specified in [DESIGN.md](DESIGN.md).
 
 ---
 
-## 1. Platform Status Table
+## Download
 
-Verified levels below are factual records copied directly from each phase's completion report (`.agy/done/`):
+Official pre-built binaries are attached to each [GitHub Release](https://github.com/giacngo/palikey/releases):
+
+- **macOS (Universal arm64 + x86_64)**: `PaliKeyboard-macOS.zip`
+  Universal InputMethodKit bundle (`PaliKey.app`). Extract to `~/Library/Input Methods/`, log out and back in, then enable in *System Settings $\rightarrow$ Keyboard $\rightarrow$ Text Input $\rightarrow$ Input Sources*.
+- **Windows (x64)**: `PaliKeyboard-Windows.zip`
+  Contains both the primary modern Text Services Framework COM service (`PaliKeyTSF.dll` with `register.bat` / `unregister.bat`) and the standalone zero-install portable tray hook (`palikey-windows.exe`), along with `INSTALL.txt`.
+
+*Other platforms (Linux, Android, iOS, Web, Keyman) are currently build-from-source — see [Build From Source](#build-from-source-summary) below.*
+
+---
+
+## Platform Status Table
+
+Verified levels below are factual records:
 
 | Platform / Shell | Implementation | Phase | Verification Level | Host Environment |
 |---|---|---|---|---|
-| **Core Engine** (`palikey-engine`) | Rust transducer state machine + C FFI | Phase 0 | **Verified** — 31/31 cargo tests passed (14 unit tests, 17 golden corpus tests: Velthuis, PaliTelex, SIL). | Intel iMac (`x86_64-apple-darwin`) |
-| **macOS** (`palikey-macos`) | Native Swift InputMethodKit (IMK) bundle | Phase 1a | **Verified** — Compiled with `swiftc`, linked `libpalikey_engine.a` via C FFI, ad-hoc codesigned, headless smoke test passed (`sammaadi.t.thi` $\rightarrow$ `sammādiṭṭhi`, backspace undo, PaliTelex, SIL, EasyUnicode). | macOS 15.7.9, x86_64 |
+| **Core Engine** (`palikey-engine`) | Rust transducer state machine + C FFI | Phase 0 | **Verified** — 36/36 cargo tests passed (18 unit tests, 18 golden corpus tests: Velthuis, PaliTelex, SIL, Vietnamese Telex). | Intel iMac (`x86_64-apple-darwin`) & CI |
+| **macOS** (`palikey-macos`) | Native Swift InputMethodKit (IMK) universal bundle | Phase 1a & 8 | **CI-built release binaries; community testing welcome** — Universal (`arm64` + `x86_64`) bundle built via GitHub Actions / `build.sh`; headless smoke tests pass; live macOS end-user testing welcome. | macOS 15.7.9 / GitHub Actions runner |
+| **Windows TSF** (`palikey-tsf`) | C++17 Text Services Framework COM DLL (`PaliKeyTSF.dll`) | Phase 4 | **CI-built release binaries; community testing welcome** — Implements `ITfTextInputProcessorEx`, `ITfKeyEventSink`, `ITfCompositionSink` (preedit underline). Built via GitHub Actions MSVC toolchain; Windows live registration & runtime testing welcome. | Windows Server 2022 / Windows 11 runner |
+| **Windows Hook** (`palikey-windows`) | Standalone Rust system tray app (`WH_KEYBOARD_LL` + `SendInput`) | Phase 1c | **CI-built release binaries; community testing welcome** — Zero-install portable fallback built via GitHub Actions MSVC toolchain; Windows runtime testing welcome. | Windows Server 2022 / Windows 11 runner |
+| **Linux Fcitx5** (`palikey-linux-fcitx5`) | Modern C++17 addon (`InputMethodEngineV2`) | Phase 3 | **Code-only verified** — CMake + CPack packaging. Compiled against stubs; shared config parser & EasyUnicode unit test passed linking `libpalikey_engine.a`; live Linux desktop runtime testing pending. | Code-only (Clang 17.0, Ubuntu/Debian/Arch) |
+| **Linux IBus** (`palikey-linux-ibus`) | C11 standalone GObject daemon (`IBusEngine`) | Phase 3 | **Code-only verified** — CMake + CPack packaging, D-Bus component manifest. Compiled against stubs; unit test passed linking `libpalikey_engine.a`; live Linux desktop runtime testing pending. | Code-only (Clang 17.0, GNOME/Fedora/Ubuntu) |
+| **Keyman** (`palikey-keyman`) | Keyman package (`palikey.kmn`, `palikey.kpj`) | Phase 1b | **Code-only verified** — Synthesized from `shared/schemes.json` via `generate_kmn.py`; unified Velthuis and PaliTelex with zero conflicts; Keyman Developer binary compilation pending. | Code-only (Keyman Developer) |
 | **Web** (`palikey-web`) | WebAssembly (`wasm32-unknown-unknown`) + JS glue | Phase 1b | **Verified** — 41 KB standalone `.wasm`, single-page interactive UI with offline base64 fallback, 52/52 Node.js integration tests passed (`test.mjs`). | Node.js v20+, Chrome/Safari |
-| **Keyman** (`palikey-keyman`) | Keyman package (`palikey.kmn`, `palikey.kpj`) | Phase 1b | **Verified** — Synthesized from `shared/schemes.json` via `generate_kmn.py`; unified Velthuis and PaliTelex with zero conflicts. | Keyman Developer |
-| **Windows Hook** (`palikey-windows`) | Standalone Rust system tray app (`WH_KEYBOARD_LL` + `SendInput`) | Phase 1c | **Code & Cross-Check Verified** — 6/6 tests pass on host; `cargo check --target x86_64-pc-windows-msvc` passed cleanly (0 errors, 0 warnings). Portable fallback. | Host cross-check; Windows runtime pending |
 | **Android** (`palikey-android`) | Kotlin `InputMethodService` + C++ JNI bridge | Phase 2a | **Verified** — Zero network permissions (`INTERNET` absent). Dual layouts (Transducer + Dedicated Pāḷi row + Off). Native staticlibs built for `arm64-v8a`, `armeabi-v7a`, `x86_64`. Output debug APK verified (4.8 MB). | Android SDK 35, NDK 26.3 |
 | **iOS** (`palikey-ios`) | Swift container app + programmatic UIKit keyboard extension | Phase 2b | **Verified** — `RequestsOpenAccess = false` (NO Full Access). Universal `PaliKeyEngine.xcframework` (`arm64`, `x86_64-sim`, `arm64-sim`). Full build succeeded in Xcode targeting iOS Simulator. | Xcode 26.3, iOS SDK 26.2 |
-| **Linux Fcitx5** (`palikey-linux-fcitx5`) | Modern C++17 addon (`InputMethodEngineV2`) | Phase 3 | **Verified** — CMake + CPack DEB/RPM packaging. Compiled with Clang `-Wall -Wextra -Werror` against stubs; shared config parser & EasyUnicode unit test passed linking `libpalikey_engine.a`. | Clang 17.0, Ubuntu/Debian/Arch |
-| **Linux IBus** (`palikey-linux-ibus`) | C11 standalone GObject daemon (`IBusEngine`) | Phase 3 | **Verified** — CMake + CPack DEB/RPM packaging, D-Bus component manifest. Compiled with Clang against stubs; shared config parser & EasyUnicode unit test passed linking `libpalikey_engine.a`. | Clang 17.0, GNOME/Fedora/Ubuntu |
-| **Windows TSF** (`palikey-tsf`) | C++17 Text Services Framework COM DLL (`PaliKeyTSF.dll`) | Phase 4 | **Code & Cross-Check Verified** — Implements `ITfTextInputProcessorEx`, `ITfKeyEventSink`, `ITfCompositionSink` (preedit underline), and `ITfDisplayAttributeProvider`. Per-context engine instances. FFI cross-check complete. Windows targets typecheck cleanly. | Host cross-check; Windows runtime pending |
 
 ---
 
-## 2. Installation Links (Distribution Hub)
-
-In accordance with product distribution policy, all downloads are hosted with direct links via the official hub:
-
-### [giacngo.org/tools/palikey](https://giacngo.org/tools)
-
-| Platform | Channel / Package | Direct Link Placeholder |
-|---|---|---|
-| **macOS** | `.dmg` Drag-and-Drop Installer | [Download for macOS](https://github.com/giacngo/palikey/releases/download/v0.1.0/PaliKey-0.1.0-macOS.dmg) |
-| **Windows** | Text Services Framework (TSF) DLL | [Download for Windows (TSF)](https://github.com/giacngo/palikey/releases/download/v0.1.0/PaliKeyTSF-0.1.0-Windows.zip) |
-| **Windows** | Portable Executable (Hook Fallback) | [Download for Windows (Portable)](https://github.com/giacngo/palikey/releases/download/v0.1.0/PaliKey-Hook-0.1.0-x64.zip) |
-| **Linux** | Debian / Ubuntu Package (`.deb`) | [Download for Linux (.deb)](https://github.com/giacngo/palikey/releases/download/v0.1.0/fcitx5-palikey_0.1.0_amd64.deb) |
-| **Linux** | Fedora / RHEL Package (`.rpm`) | [Download for Linux (.rpm)](https://github.com/giacngo/palikey/releases/download/v0.1.0/fcitx5-palikey-0.1.0-1.x86_64.rpm) |
-| **Android** | Google Play Store | [Get on Google Play](https://play.google.com/store/apps/details?id=org.giacngo.palikey) |
-| **Android** | Direct Sideload APK | [Download Android APK](https://github.com/giacngo/palikey/releases/download/v0.1.0/PaliKey-0.1.0-universal.apk) |
-| **iOS** | Apple App Store | [Download on the App Store](https://apps.apple.com/app/palikey-pali-keyboard/id6740000000) |
-| **Web** | In-Browser Typing Box | [Use Online Web Tool](https://giacngo.org/tools/palikey/) |
-| **Keyman** | Unified Keyboard Package (`.kmp`) | [Install Keyman Package](https://keyman.com/keyboards/install/palikey) |
-
----
-
-## 3. Build From Source Summary
+## Build From Source Summary
 
 ### Prerequisites
 - **Rust Toolchain**: `cargo` 1.80+ (`rustup default stable`)
@@ -136,14 +128,14 @@ register.bat
 ```cmd
 cd palikey-windows
 cargo build --release
-# Output executable: target/release/palikey.exe
+# Output executable: target/release/palikey-windows.exe
 ```
 
 ---
 
-## 4. Supported Input Schemes
+## Supported Input Schemes
 
-All shells support the three unified transliteration schemes defined in `shared/schemes.json`:
+All shells support the unified transliteration schemes defined in `shared/schemes.json`:
 
 1. **Velthuis** (Scholar standard):
    `aa` $\rightarrow$ ā, `ii` $\rightarrow$ ī, `uu` $\rightarrow$ ū, `.t` $\rightarrow$ ṭ, `.d` $\rightarrow$ ḍ, `.n` $\rightarrow$ ṇ, `.m` $\rightarrow$ ṃ, `"n` $\rightarrow$ ṅ, `~n` $\rightarrow$ ñ, `.l` $\rightarrow$ ḷ.
@@ -157,7 +149,7 @@ All shells support the three unified transliteration schemes defined in `shared/
 
 ---
 
-## 5. License & Credits
+## License & Credits
 
 - **License**: MIT License ([LICENSE](LICENSE)) — clean-room development.
 - **Project Design**: Inspired by `vnkey`'s core-and-shell architecture pattern; no vnkey code is used.
