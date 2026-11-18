@@ -65,7 +65,7 @@ int main(int argc, char **argv) {
     } else {
         IBusComponent *component = ibus_component_new(
             "org.freedesktop.IBus.PaliKey",
-            "PaliKey Pāḷi Input Method",
+            "Pāḷi Keyboard Input Method",
             "0.1.0",
             "MIT",
             "Giac Ngo",
@@ -75,7 +75,7 @@ int main(int argc, char **argv) {
         );
         IBusEngineDesc *desc = ibus_engine_desc_new(
             "palikey",
-            "PaliKey (Pāḷi)",
+            "Pāḷi Keyboard",
             "Pāḷi input method engine (Velthuis, PaliTelex, SIL)",
             "pi",
             "MIT",

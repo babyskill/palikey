@@ -18,14 +18,14 @@ struct ContentView: View {
                 // Section 1: Activation & Quick Setup
                 Section(header: Label("Setup & Activation", systemImage: "gearshape.fill")) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("To use PaliKey across iOS apps:")
+                        Text("To use Pāḷi Keyboard across iOS apps:")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
 
                         SetupStepRow(number: "1", text: "Open iOS Settings")
                         SetupStepRow(number: "2", text: "Go to General → Keyboard → Keyboards")
                         SetupStepRow(number: "3", text: "Tap 'Add New Keyboard...'")
-                        SetupStepRow(number: "4", text: "Select 'PaliKey' under Third-Party Keyboards")
+                        SetupStepRow(number: "4", text: "Select 'Pāḷi Keyboard' under Third-Party Keyboards")
                     }
                     .padding(.vertical, 4)
 
@@ -78,7 +78,7 @@ struct ContentView: View {
                 // Section 4: Live Test Field
                 Section(header: Label("Live Test Area", systemImage: "keyboard")) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Tap below to test the PaliKey keyboard extension:")
+                        Text("Tap below to test the Pāḷi Keyboard extension:")
                             .font(.caption)
                             .foregroundColor(.secondary)
 
@@ -114,7 +114,7 @@ struct ContentView: View {
                                 .fontWeight(.semibold)
                         }
 
-                        Text("PaliKey operates under iOS's strict sandboxed keyboard mode. It has no network access (`INTERNET` permission), cannot access the system clipboard, and does not record or transmit typed text anywhere. All transliteration is performed 100% locally on-device by the embedded Rust engine.")
+                        Text("Pāḷi Keyboard operates under iOS's strict sandboxed keyboard mode. It has no network access (`INTERNET` permission), cannot access the system clipboard, and does not record or transmit typed text anywhere. All transliteration is performed 100% locally on-device by the embedded Rust engine.")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -149,7 +149,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationTitle("PaliKey")
+            .navigationTitle("Pāḷi Keyboard")
         }
         .navigationViewStyle(.stack)
     }

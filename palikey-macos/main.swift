@@ -41,7 +41,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc public func showAbout(_ sender: NSMenuItem) {
         let alert = NSAlert()
-        alert.messageText = "PaliKey v\(PaliConfig.shared.version)"
+        alert.messageText = "Pāḷi Keyboard v\(PaliConfig.shared.version)"
         alert.informativeText = """
         Cross-platform Pāḷi Input Method
         Clean-room MIT Implementation
@@ -62,7 +62,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Menu Builder
 
     public static func buildMenu() -> NSMenu {
-        let menu = NSMenu(title: "PaliKey")
+        let menu = NSMenu(title: "Pāḷi Keyboard")
         let config = PaliConfig.shared
 
         // Header: Schemes
@@ -114,7 +114,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(NSMenuItem.separator())
 
         // About
-        let aboutItem = NSMenuItem(title: "About PaliKey...", action: #selector(showAbout(_:)), keyEquivalent: "")
+        let aboutItem = NSMenuItem(title: "About Pāḷi Keyboard...", action: #selector(showAbout(_:)), keyEquivalent: "")
         aboutItem.target = NSApp.delegate
         menu.addItem(aboutItem)
 

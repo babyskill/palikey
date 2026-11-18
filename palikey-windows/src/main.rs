@@ -181,7 +181,7 @@ unsafe fn show_tray_menu(hwnd: HWND) {
     append_separator();
 
     // 5. Exit
-    append_item(MF_STRING, IDM_EXIT, "Exit PaliKey");
+    append_item(MF_STRING, IDM_EXIT, "Exit Pāḷi Keyboard");
 
     let mut pt = POINT { x: 0, y: 0 };
     GetCursorPos(&mut pt);
@@ -266,7 +266,7 @@ fn windows_main() {
     unsafe {
         let h_instance = GetModuleHandleW(std::ptr::null());
         let class_name: Vec<u16> = "PaliKeyMessageWindowClass\0".encode_utf16().collect();
-        let window_title: Vec<u16> = "PaliKey\0".encode_utf16().collect();
+        let window_title: Vec<u16> = "Pāḷi Keyboard\0".encode_utf16().collect();
 
         let mut wc: WNDCLASSEXW = std::mem::zeroed();
         wc.cbSize = std::mem::size_of::<WNDCLASSEXW>() as u32;
@@ -306,7 +306,7 @@ fn windows_main() {
         nid.uCallbackMessage = WM_TRAYICON;
         nid.hIcon = LoadIconW(std::ptr::null_mut(), IDI_APPLICATION);
 
-        let tip = "PaliKey — Pāḷi Input Method";
+        let tip = "Pāḷi Keyboard — Pāḷi Input Method";
         let tip_utf16: Vec<u16> = tip.encode_utf16().collect();
         let copy_len = tip_utf16.len().min(127);
         nid.szTip[..copy_len].copy_from_slice(&tip_utf16[..copy_len]);

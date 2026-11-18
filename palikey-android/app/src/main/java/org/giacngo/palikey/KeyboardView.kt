@@ -253,7 +253,7 @@ class KeyboardView(
         row.addView(modeKey)
 
         // Spacebar
-        val spaceKey = createKey("Space", weight = 3.6f) {
+        val spaceKey = createKey("Pāḷi Keyboard", weight = 3.6f) {
             listener.onSpace()
         }
         row.addView(spaceKey)

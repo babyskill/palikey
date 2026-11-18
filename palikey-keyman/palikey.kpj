@@ -15,8 +15,8 @@
       <FileVersion>0.1.0</FileVersion>
       <FileType>.kmn</FileType>
       <Details>
-        <Name>PaliKey</Name>
-        <Copyright>© PaliKey Contributors</Copyright>
+        <Name>Pāḷi Keyboard</Name>
+        <Copyright>© Pāḷi Keyboard Contributors</Copyright>
         <Message>Cross-platform Pāḷi input method supporting PaliTelex and Velthuis conventions.</Message>
       </Details>
     </File>

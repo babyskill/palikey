@@ -1,9 +1,8 @@
-# PaliKey — Cross-platform Pāḷi Input Method: Design
+# Pāḷi Keyboard (internal codename: `palikey`) — Cross-platform Pāḷi Input Method: Design
 
-Status: DESIGN v1 — 2026-11-17, by Muse for Kien. Awaiting Kien's decisions in §9.
-Codename: `palikey` (repo name). Product name is an open decision (§9.2) — an iOS app
-named "Pali Key" by another author already exists, so the codename must not become
-the store name blindly.
+Status: DESIGN v1 — 2026-11-17, by Muse for Kien. Owner decisions recorded in §9.
+Product Name: **Pāḷi Keyboard** (owner decision 2026-11-18, §9).
+Codename: `palikey` (repo name and internal identifiers).
 
 ## 1. Problem: fragmentation (verified 2026-11-17)
 
@@ -215,11 +214,11 @@ passthrough (composition OFF); Pāḷi uses the persisted Pāḷi variant (0/1/2
 the top diacritic row visible. Pāḷi variant selection stays a dedicated choice in
 Settings, decoupling mode cycling from variant selection.
 
+DECIDED 2026-11-18 (Owner, Phase 7): Product name is **Pāḷi Keyboard** (with diacritics: ā = U+0101, ḷ = U+1E37). Internal codename `palikey` / `PaliKey` remains unchanged across repositories, packages, directories, and internal identifiers. All user-visible display strings renamed to "Pāḷi Keyboard".
+
 1. **License/approach:** clean-room MIT (recommended, §2) vs fork vnkey under
    GPL-3.0. → DECIDED: clean-room MIT.
-2. **Product name:** codename `palikey` for the repo. Store-facing name cannot
-   be "Pali Key" (taken on iOS). Candidates: `PaliType`, `SuttaKey`,
-   `PāḷiBoard`. → DEFERRED by Kien: keep codename, decide name at Phase 1.
+2. **Product name:** DECIDED 2026-11-18: **Pāḷi Keyboard** (with diacritics: ā = U+0101, ḷ = U+1E37). Internal codename `palikey` kept unchanged.
 3. **PaliTelex suffix:** `x` (`tx`→ṭ) vs `r` (`tr`→ṭ) vs dot-suffix (`t.`→ṭ,
    closest to Velthuis reversed). → DECIDED: `x`.
 4. **GitHub home:** new public repo `babyskill/palikey` (like PaliDict's public

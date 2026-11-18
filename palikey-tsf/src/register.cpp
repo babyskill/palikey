@@ -8,7 +8,7 @@ extern HINSTANCE g_hInst;
 
 static const WCHAR c_szClsidKeyPrefix[] = L"CLSID\\{D67F188D-4418-44AA-A564-E007D2C0DD1C}";
 static const WCHAR c_szInprocServer32[] = L"InprocServer32";
-static const WCHAR c_szDescription[] = L"PaliKey Pāḷi Text Service";
+static const WCHAR c_szDescription[] = L"Pāḷi Keyboard";
 static const WCHAR c_szThreadingModel[] = L"Apartment";
 
 static const struct {

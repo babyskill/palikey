@@ -44,7 +44,7 @@ STDMETHODIMP CPaliKeyDisplayAttributeInfo::GetGUID(GUID *pguid) {
 
 STDMETHODIMP CPaliKeyDisplayAttributeInfo::GetDescription(BSTR *pbstrDesc) {
     if (!pbstrDesc) return E_INVALIDARG;
-    *pbstrDesc = SysAllocString(L"PaliKey Composition Attribute");
+    *pbstrDesc = SysAllocString(L"Pāḷi Keyboard Composition Attribute");
     return (*pbstrDesc) ? S_OK : E_OUTOFMEMORY;
 }
 

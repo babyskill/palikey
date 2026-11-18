@@ -97,7 +97,7 @@ def main():
         "c identical Unicode output.",
         "c =====================================================================",
         "",
-        "store(&NAME) 'PaliKey'",
+        "store(&NAME) 'Pāḷi Keyboard'",
         "store(&KEYBOARDVERSION) '0.1.0'",
         "store(&COPYRIGHT) 'MIT License'",
         "store(&MESSAGE) 'Cross-platform Pāḷi input method supporting PaliTelex and Velthuis conventions.'",

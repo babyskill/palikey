@@ -34,7 +34,7 @@ def main():
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PaliKey — Pāḷi Input Method Demo (Web WASM)</title>
+  <title>Pāḷi Keyboard — Pāḷi Input Method Demo (Web WASM)</title>
   <style>
     :root {{
       --bg: #0f141c;
@@ -330,7 +330,7 @@ def main():
 <body>
   <div class="container">
     <header>
-      <h1>☸ PaliKey — Web WASM Shell</h1>
+      <h1>☸ Pāḷi Keyboard — Web WASM Shell</h1>
       <p>Clean-room cross-platform Pāḷi input method engine running in WebAssembly.</p>
     </header>
 
@@ -391,7 +391,7 @@ def main():
     </div>
 
     <footer>
-      <p>PaliKey is free and open-source under MIT License · Engine compiled to WebAssembly (41 KB)</p>
+      <p>Pāḷi Keyboard is free and open-source under MIT License · Engine compiled to WebAssembly (41 KB)</p>
       <p>Zero network requests · Fully offline capable</p>
     </footer>
   </div>

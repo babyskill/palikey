@@ -20,7 +20,7 @@ PaliKey Android is a clean-room, privacy-first Android Input Method Service (IME
 │   │     [⇧]  z  x  c  v  b  n  m  [⌫]                              │   │
 │   └────────────────────────────────────────────────────────────────┘   │
 │   ┌────────────────────────────────────────────────────────────────┐   │
-│   │     [?123]   [⚡ Mode]   [ PaliKey • Space ]   [.]   [↵]        │   │
+│   │     [?123]   [⚡ Mode]   [ Pāḷi Keyboard ]   [.]   [↵]        │   │
 │   └────────────────────────────────────────────────────────────────┘   │
 └────────────────────────────────────┬───────────────────────────────────┘
                                      │ Touch Keystrokes
@@ -162,9 +162,9 @@ To assemble a release APK:
 ## 5. Settings & Activation Flow
 
 1. **Settings Screen**:
-   - Open the **PaliKey** app from your launcher.
-   - Tap **"1. Enable PaliKey in Settings"** → opens Android's system "Manage on-screen keyboards" settings page. Toggle PaliKey on.
-   - Tap **"2. Select PaliKey Keyboard"** → prompts the Android input method picker. Select PaliKey.
+   - Open the **Pāḷi Keyboard** app from your launcher.
+   - Tap **"1. Enable Pāḷi Keyboard in Settings"** → opens Android's system "Manage on-screen keyboards" settings page. Toggle Pāḷi Keyboard on.
+   - Tap **"2. Select Pāḷi Keyboard"** → prompts the Android input method picker. Select Pāḷi Keyboard.
 2. **Configuration Options**:
    - **Transliteration Scheme**: Choose between Velthuis, PaliTelex, or SIL.
    - **Niggahīta Variant**: Choose `ṃ` (U+1E43, Dot Below - PTS / SuttaCentral) or `ṁ` (U+1E41, Dot Above - VRI).

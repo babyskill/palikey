@@ -321,7 +321,7 @@ final class KeyboardView: UIView, UIInputViewAudioFeedback {
         // Spacebar
         let spaceTitle: String
         switch mode {
-        case .transducer: spaceTitle = "PaliKey (\(preferences.activeScheme.displayName))"
+        case .transducer: spaceTitle = "Pāḷi Keyboard (\(preferences.activeScheme.displayName))"
         case .paliRow: spaceTitle = "Space"
         case .off: spaceTitle = "English"
         }

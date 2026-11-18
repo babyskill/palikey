@@ -72,7 +72,7 @@ class SettingsActivity : Activity() {
     private fun buildUI(container: LinearLayout) {
         // Header Title
         val titleText = TextView(this).apply {
-            text = "PaliKey"
+            text = "Pāḷi Keyboard"
             textSize = 28f
             setTextColor(colorTextPrimary)
             typeface = Typeface.DEFAULT_BOLD
@@ -91,12 +91,12 @@ class SettingsActivity : Activity() {
         container.addView(createSectionHeader("KEYBOARD SETUP"))
         val activationCard = createCardLayout()
 
-        val enableButton = createActionButton("1. Enable PaliKey in Settings") {
+        val enableButton = createActionButton("1. Enable Pāḷi Keyboard in Settings") {
             startActivity(Intent(Settings.ACTION_INPUT_METHOD_SETTINGS))
         }
         activationCard.addView(enableButton)
 
-        val selectButton = createActionButton("2. Select PaliKey Keyboard") {
+        val selectButton = createActionButton("2. Select Pāḷi Keyboard") {
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
             imm?.showInputMethodPicker()
         }
@@ -217,7 +217,7 @@ class SettingsActivity : Activity() {
         val testCard = createCardLayout()
 
         val testInstruction = TextView(this).apply {
-            text = "Tap below to test typing with PaliKey (e.g. 'sammaadit.thi'):"
+            text = "Tap below to test typing with Pāḷi Keyboard (e.g. 'sammaadit.thi'):"
             setTextColor(colorTextSecondary)
             textSize = 13f
             setPadding(0, 0, 0, dp(8))
@@ -248,7 +248,7 @@ class SettingsActivity : Activity() {
         }
 
         val footerText = TextView(this).apply {
-            text = "PaliKey Engine v$versionStr • Offline • Zero telemetry\nOrganized by Giac Ngo • Open-source MIT"
+            text = "Pāḷi Keyboard Engine v$versionStr • Offline • Zero telemetry\nOrganized by Giac Ngo • Open-source MIT"
             textSize = 12f
             setTextColor(colorTextSecondary)
             gravity = Gravity.CENTER

@@ -1,4 +1,6 @@
-# PaliKey
+# Pāḷi Keyboard
+
+> **Product Name:** Pāḷi Keyboard (internal codename: `palikey`)
 
 One Pāḷi input method for every platform — one Rust engine, one shared transliteration standard, and native shells for Windows, macOS, Linux, Android, iOS, and Web.
 

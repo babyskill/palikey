@@ -1,6 +1,6 @@
 <component>
     <name>org.freedesktop.IBus.PaliKey</name>
-    <description>PaliKey Pāḷi Input Method</description>
+    <description>Pāḷi Keyboard Input Method</description>
     <exec>@CMAKE_INSTALL_FULL_LIBEXECDIR@/ibus-engine-palikey --ibus</exec>
     <version>@PROJECT_VERSION@</version>
     <author>Giac Ngo &lt;info@giacngo.org&gt;</author>
@@ -10,7 +10,7 @@
     <engines>
         <engine>
             <name>palikey</name>
-            <longname>PaliKey (Pāḷi)</longname>
+            <longname>Pāḷi Keyboard</longname>
             <description>Pāḷi input method engine (Velthuis, PaliTelex, SIL)</description>
             <language>pi</language>
             <license>MIT</license>

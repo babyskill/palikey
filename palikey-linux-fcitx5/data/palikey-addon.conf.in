@@ -1,5 +1,5 @@
 [Addon]
-Name=PaliKey
+Name=Pāḷi Keyboard
 Comment=Pāḷi Input Method Engine
 Category=InputMethod
 Version=@PROJECT_VERSION@
