@@ -68,8 +68,7 @@ swiftc \
     -framework Carbon \
     -import-objc-header "$REPO_ROOT/palikey-engine/include/palikey.h" \
     -I "$REPO_ROOT/palikey-engine/include" \
-    -L "$REPO_ROOT/target/release" \
-    -lpalikey_engine \
+    "$REPO_ROOT/target/release/libpalikey_engine.a" \
     "$SCRIPT_DIR/PaliEngine.swift" \
     "$SCRIPT_DIR/PaliConfig.swift" \
     "$SCRIPT_DIR/EasyUnicode.swift" \
@@ -92,8 +91,7 @@ swiftc \
     -framework Foundation \
     -import-objc-header "$REPO_ROOT/palikey-engine/include/palikey.h" \
     -I "$REPO_ROOT/palikey-engine/include" \
-    -L "$REPO_ROOT/target/release" \
-    -lpalikey_engine \
+    "$REPO_ROOT/target/release/libpalikey_engine.a" \
     "$SCRIPT_DIR/PaliEngine.swift" \
     "$SCRIPT_DIR/EasyUnicode.swift" \
     "$SCRIPT_DIR/smoke_test.swift" \
