@@ -28,10 +28,14 @@
 		<dict>
 			<key>org.giacngo.inputmethod.PaliKey</key>
 			<dict>
+				<key>TISInputSourceID</key>
+				<string>org.giacngo.inputmethod.PaliKey</string>
+				<key>TISIntendedLanguage</key>
+				<string>pi</string>
+				<key>tsInputModeDefaultStateKey</key>
+				<true/>
 				<key>tsInputModeIsVisibleKey</key>
 				<true/>
-				<key>tsInputModeKeyAgreementReplacementKey</key>
-				<string>org.giacngo.inputmethod.PaliKey</string>
 				<key>tsInputModeMenuIconFileKey</key>
 				<string>PaliKey.tiff</string>
 				<key>tsInputModePaletteIconFileKey</key>
@@ -42,6 +46,10 @@
 				<string>smRoman</string>
 			</dict>
 		</dict>
+		<key>tsVisibleInputModeOrderedArrayKey</key>
+		<array>
+			<string>org.giacngo.inputmethod.PaliKey</string>
+		</array>
 	</dict>
 	<key>InputMethodConnectionName</key>
 	<string>PaliKey_1_Connection</string>
@@ -53,9 +61,15 @@
 	<true/>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>TISInputSourceID</key>
+	<string>org.giacngo.inputmethod.PaliKey</string>
+	<key>TISIntendedLanguage</key>
+	<string>pi</string>
 	<key>tsInputMethodCharacterRepertoireKey</key>
-	<string>Latn</string>
-	<key>tsInputMethodIconPath</key>
+	<array>
+		<string>Latn</string>
+	</array>
+	<key>tsInputMethodIconFileKey</key>
 	<string>PaliKey.tiff</string>
 </dict>
 </plist>

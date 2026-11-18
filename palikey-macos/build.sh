@@ -65,10 +65,25 @@ mkdir -p "$BUILD_DIR/arch"
 cp "$SCRIPT_DIR/Info.plist" "$APP_BUNDLE/Contents/Info.plist"
 plutil -lint "$APP_BUNDLE/Contents/Info.plist"
 
-# Copy icon if available or generate placeholder
+# Copy icons and resources
 if [ -f "$SCRIPT_DIR/PaliKey.tiff" ]; then
     cp "$SCRIPT_DIR/PaliKey.tiff" "$APP_BUNDLE/Contents/Resources/PaliKey.tiff"
 fi
+if [ -f "$SCRIPT_DIR/PaliKey.icns" ]; then
+    cp "$SCRIPT_DIR/PaliKey.icns" "$APP_BUNDLE/Contents/Resources/PaliKey.icns"
+fi
+
+# Copy localized resources (InfoPlist.strings, etc.)
+if [ -d "$SCRIPT_DIR/Resources" ]; then
+    cp -R "$SCRIPT_DIR/Resources/" "$APP_BUNDLE/Contents/Resources/"
+fi
+
+# Validate strings files
+for strings_file in "$APP_BUNDLE/Contents/Resources"/*/*.strings; do
+    if [ -f "$strings_file" ]; then
+        plutil -lint "$strings_file"
+    fi
+done
 
 # 4. Compile Swift IMK application binary for both architectures and lipo merge
 echo ""

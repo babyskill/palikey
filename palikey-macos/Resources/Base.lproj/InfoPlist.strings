@@ -1,0 +1,5 @@
+/* Localized versions of Info.plist keys */
+CFBundleDisplayName = "Pāḷi Keyboard";
+CFBundleName = "Pāḷi Keyboard";
+"org.giacngo.inputmethod.PaliKey" = "Pāḷi Keyboard";
+"org.giacngo.inputmethod.PaliKey.PaliKey" = "Pāḷi Keyboard";
