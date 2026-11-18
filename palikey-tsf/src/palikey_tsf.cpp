@@ -555,7 +555,7 @@ HRESULT CPaliKeyTextService::DoKeyActionSession(TfEditCookie ec, ITfContext *pic
                     if (SUCCEEDED(pState->pComposition->GetRange(&pFullRange))) {
                         SetDisplayAttribute(ec, pic, pFullRange, m_displayAttrAtom);
                         pFullRange->Collapse(ec, TF_ANCHOR_END);
-                        TF_SELECTION sel = { pFullRange, TF_DEFAULT_SELECTION };
+                        TF_SELECTION sel = { pFullRange, { static_cast<TfActiveSelEnd>(TF_AE_NONE), FALSE } };
                         pic->SetSelection(ec, 1, &sel);
                         pFullRange->Release();
                     }

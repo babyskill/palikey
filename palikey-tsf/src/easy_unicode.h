@@ -15,7 +15,7 @@
  * @return Wide string literal with the Pāḷi character, or nullptr if no mapping exists.
  */
 inline const WCHAR* EasyUnicodeMap(WCHAR ch, bool isShift, uint32_t niggahita = 0) {
-    WCHAR lower = (WCHAR)CharLowerW((LPWSTR)(ULONG_PTR)ch);
+    WCHAR lower = (WCHAR)(ULONG_PTR)CharLowerW((LPWSTR)(ULONG_PTR)ch);
     bool upper = isShift || (ch != lower);
 
     switch (lower) {
