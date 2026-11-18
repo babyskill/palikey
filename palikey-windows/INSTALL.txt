@@ -1,0 +1,120 @@
+================================================================================
+PaliKey for Windows — Installation & Usage Guide
+Pāḷi Keyboard (MIT License)
+================================================================================
+
+This package provides two distinct ways to type Pāḷi diacritics on Windows:
+1. Native Text Services Framework (TSF) COM DLL — PaliKeyTSF.dll (Recommended)
+2. Standalone Portable Keyboard Hook — palikey-windows.exe (Portable Fallback)
+
+Package Contents:
+  - PaliKeyTSF.dll       : 64-bit modern Windows Text Services Framework IME DLL
+  - register.bat         : Helper batch script to register PaliKeyTSF.dll (as admin)
+  - unregister.bat       : Helper batch script to unregister PaliKeyTSF.dll (as admin)
+  - palikey-windows.exe  : Portable standalone tray executable (no admin needed)
+  - INSTALL.txt          : This installation and usage document
+
+
+--------------------------------------------------------------------------------
+OPTION 1: Text Services Framework (TSF) IME — RECOMMENDED
+--------------------------------------------------------------------------------
+The TSF DLL integrates directly into the Windows input system (matching Windows
+language switching with Win + Space). It provides inline dotted-underline
+composition in Microsoft Word, web browsers, Notepad, and all modern Win32 /
+UWP applications.
+
+Requirements:
+  - Windows 10 (64-bit) or Windows 11
+  - Administrator privileges for system registration
+
+Installation & Registration:
+  Method A (Automated):
+    1. Extract the entire ZIP archive to a permanent location (e.g.,
+       C:\Program Files\PaliKey or C:\Tools\PaliKey).
+       Do NOT register from temporary extraction folders or Downloads.
+    2. Right-click "register.bat" and select "Run as administrator".
+    3. Click "Yes" on the User Account Control (UAC) prompt.
+    4. A success message confirms registration.
+
+  Method B (Manual via Elevated Command Prompt):
+    1. Place PaliKeyTSF.dll in your chosen directory (e.g., C:\Tools\PaliKey).
+    2. Click Start, type "cmd", right-click "Command Prompt" and select
+       "Run as administrator".
+    3. Run the following command:
+         regsvr32.exe "C:\Tools\PaliKey\PaliKeyTSF.dll"
+    4. You should receive a dialog:
+         "DllRegisterServer in PaliKeyTSF.dll succeeded."
+
+How to Use:
+  1. Press "Win + Space" or click the language indicator on the Windows
+     taskbar to switch input methods.
+  2. Select "PaliKey (Pāḷi)" or "Pāḷi Keyboard".
+  3. Start typing in any text editor or application:
+       - Velthuis scheme (default):
+           aa -> ā,  ii -> ī,  uu -> ū
+           .t -> ṭ,  .d -> ḍ,  .n -> ṇ,  .m -> ṃ,  "n -> ñ
+       - EasyUnicode (AltGr direct diacritic layer):
+           AltGr + a -> ā,  AltGr + t -> ṭ,  AltGr + m -> ṃ
+       - Single-level backspace undo: typing Backspace after composing "ā"
+         reverts back to raw "aa".
+
+Uninstallation (TSF):
+  Method A:
+    Right-click "unregister.bat" and select "Run as administrator".
+  Method B (Manual):
+    Open an elevated Command Prompt and run:
+      regsvr32.exe /u "C:\Tools\PaliKey\PaliKeyTSF.dll"
+    After successful unregistration, you can safely delete the DLL and folder.
+
+
+--------------------------------------------------------------------------------
+OPTION 2: Standalone Portable Keyboard Hook (Zero-Install Fallback)
+--------------------------------------------------------------------------------
+The portable executable (palikey-windows.exe) runs in the system tray and uses a
+low-level Windows keyboard hook. It requires no administrator rights and no
+system registration.
+
+Requirements:
+  - Windows 10 or 11 (64-bit)
+  - No administrator privileges required
+
+How to Use:
+  1. Double-click "palikey-windows.exe" to start.
+  2. An icon appears in the system notification area (tray at bottom right).
+  3. Left-click or right-click the tray icon to open the menu:
+       - Toggle Pāḷi input on/off.
+       - Select input scheme:
+           * Velthuis (aa -> ā, .t -> ṭ, .m -> ṃ)
+           * PaliTelex (aa -> ā, tx -> ṭ, ngw -> ṅ)
+           * SIL / Keyman (-a -> ā, .t -> ṭ, >n -> ṅ)
+       - Select Niggahīta orthography:
+           * ṃ (U+1E43 Dot Below — PTS / SuttaCentral standard)
+           * ṁ (U+1E41 Dot Above — VRI tradition)
+       - Toggle Extended Sanskrit / IAST (ṛ, ṝ, ḥ, ś, ṣ).
+       - Exit PaliKey.
+
+Windows Defender SmartScreen Notice:
+  Because development and community builds are not digitally signed with an
+  EV certificate, Windows Defender SmartScreen may show an alert on first run:
+    "Windows protected your PC — Microsoft Defender SmartScreen prevented an
+     unrecognized app from starting."
+  To run:
+    1. Click "More info".
+    2. Click "Run anyway".
+
+How to Run Automatically at Startup (Optional):
+  1. Press Win + R, type: shell:startup  and press Enter.
+  2. Right-click inside the Startup folder -> New -> Shortcut.
+  3. Browse to "palikey-windows.exe", name it "PaliKey", and finish.
+
+Uninstallation (Hook):
+  1. Right-click the PaliKey tray icon and choose "Exit PaliKey".
+  2. Delete "palikey-windows.exe" (and the Startup shortcut if created).
+  3. Optional: Delete configuration directory at %APPDATA%\PaliKey.
+
+
+================================================================================
+Configuration:
+Both options store user preferences in:
+  %APPDATA%\PaliKey\config.json
+================================================================================

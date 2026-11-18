@@ -98,6 +98,8 @@ target_link_libraries(PaliKeyTSF PRIVATE
     oleaut32
     user32
     shlwapi
+    userenv
+    bcrypt
 )
 
 # -----------------------------------------------------------------------------
