@@ -17,7 +17,7 @@ extern "C" {
  * Conforms to shared/config.schema.json.
  */
 typedef struct {
-    uint32_t scheme;            /**< PalikeySchemeId (0=Velthuis, 1=PaliTelex, 2=SIL) */
+    uint32_t scheme;            /**< PalikeySchemeId (0=Velthuis, 1=PaliTelex, 2=SIL, 3=VietnameseTelex) */
     uint32_t niggahita;         /**< PalikeyNiggahitaVariant (0=DotBelow ṃ, 1=DotAbove ṁ) */
     bool extended_set;          /**< Enable Sanskrit/IAST characters */
     bool escape_enabled;        /**< Escape prefix mechanism enabled */

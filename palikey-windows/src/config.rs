@@ -17,6 +17,7 @@ use serde::{Deserialize, Serialize};
 #[serde(rename_all = "snake_case")]
 pub enum SchemeConfig {
     Velthuis,
+    #[serde(alias = "vietelex", alias = "vietnamese_telex")]
     Palitelex,
     Sil,
 }
@@ -43,6 +44,8 @@ impl From<SchemeId> for SchemeConfig {
             SchemeId::Velthuis => SchemeConfig::Velthuis,
             SchemeId::PaliTelex => SchemeConfig::Palitelex,
             SchemeId::Sil => SchemeConfig::Sil,
+            // The hook shell is Pāḷi-first; the Vietnamese mode cycle lives on Android.
+            SchemeId::VietnameseTelex => SchemeConfig::Palitelex,
         }
     }
 }
@@ -284,6 +287,20 @@ mod tests {
         let cfg_sil: Config = serde_json::from_str(sil_json).expect("parse sil config");
         assert_eq!(cfg_sil.scheme, SchemeConfig::Sil);
         assert_eq!(cfg_sil.to_engine_config().scheme, SchemeId::Sil);
+
+        // SchemeId::VietnameseTelex maps to PaliTelex in the hook shell
+        assert_eq!(
+            SchemeConfig::from(SchemeId::VietnameseTelex),
+            SchemeConfig::Palitelex
+        );
+
+        let viet_json = r#"{
+  "scheme": "vietelex",
+  "niggahita": "dot_below",
+  "extended_set": false
+}"#;
+        let cfg_viet: Config = serde_json::from_str(viet_json).expect("parse vietelex config");
+        assert_eq!(cfg_viet.scheme, SchemeConfig::Palitelex);
     }
 
     #[test]

@@ -159,6 +159,7 @@ bool palikey_config_parse(const char *json_str, PalikeyConfig *config) {
                 if (strcmp(val, "velthuis") == 0) config->scheme = (uint32_t)PALIKEY_SCHEME_VELTHUIS;
                 else if (strcmp(val, "palitelex") == 0) config->scheme = (uint32_t)PALIKEY_SCHEME_PALI_TELEX;
                 else if (strcmp(val, "sil") == 0) config->scheme = (uint32_t)PALIKEY_SCHEME_SIL;
+                else if (strcmp(val, "vietelex") == 0 || strcmp(val, "vietnamese_telex") == 0) config->scheme = (uint32_t)PALIKEY_SCHEME_VIET_TELEX;
             } else {
                 skip_value(&p);
             }
